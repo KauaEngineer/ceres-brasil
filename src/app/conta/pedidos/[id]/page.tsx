@@ -31,7 +31,7 @@ export default async function PedidoDetalhePage({
 
   const { data: pedido } = await supabase
     .from('pedidos')
-    .select('*, itens_pedido(*, produtos(nome, slug))')
+    .select('*, itens_pedido(*)')
     .eq('id', id)
     .maybeSingle();
 
@@ -46,7 +46,7 @@ export default async function PedidoDetalhePage({
     id: string;
     quantidade: number;
     preco_unitario: number;
-    produtos: { nome: string; slug: string } | null;
+    produto_nome: string | null;
   }>;
 
   return (
@@ -104,7 +104,7 @@ export default async function PedidoDetalhePage({
           {itens.map((item) => (
             <li key={item.id} className="flex items-center justify-between py-3 text-sm">
               <span className="text-ceres-dark">
-                {item.quantidade}× {item.produtos?.nome ?? 'Produto'}
+                {item.quantidade}× {item.produto_nome ?? 'Produto'}
               </span>
               <span className="text-ceres-muted">
                 {formatarPreco(Number(item.preco_unitario) * item.quantidade)}
