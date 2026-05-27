@@ -5,10 +5,9 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const navLinks = [
-  { href: '/', label: 'Início', destaque: false },
-  { href: '/produtos', label: 'Loja Online', destaque: true },
-  { href: '/#sobre', label: 'Quem Somos', destaque: false },
-  { href: '/contato', label: 'Contato', destaque: false },
+  { href: '/', label: 'Início' },
+  { href: '/#sobre', label: 'Quem Somos' },
+  { href: '/contato', label: 'Contato' },
 ];
 
 export function Header() {
@@ -52,26 +51,16 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-2 md:flex md:gap-3 lg:gap-6" aria-label="Navegação principal">
-          {navLinks.map((link) =>
-            link.destaque ? (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-full bg-ceres-terracotta-soft px-4 py-1.5 text-sm font-semibold text-ceres-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-2 text-sm font-medium text-ceres-dark transition-colors hover:text-ceres-terracotta-dark"
-              >
-                {link.label}
-              </Link>
-            ),
-          )}
+        <nav className="hidden items-center gap-6 md:flex" aria-label="Navegação principal">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-ceres-dark transition-colors hover:text-ceres-terracotta-dark"
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         <div className="flex items-center gap-2 md:gap-4">
@@ -89,6 +78,13 @@ export function Header() {
           </button>
 
           <Link
+            href="/produtos"
+            className="hidden rounded-full bg-ceres-terracotta-dark px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-ceres-terracotta md:inline-flex"
+          >
+            Loja Online
+          </Link>
+
+          <Link
             href="/seja-revendedor"
             className="hidden rounded-full bg-ceres-gold px-5 py-2 text-sm font-semibold text-ceres-dark transition-transform hover:scale-105 lg:inline-flex"
           >
@@ -97,7 +93,7 @@ export function Header() {
 
           <Link
             href="/login"
-            className="hidden rounded-full border border-ceres-terracotta-dark px-5 py-2 text-sm font-medium text-ceres-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white md:inline-flex"
+            className="hidden rounded-full border border-ceres-terracotta-dark px-5 py-2 text-sm font-medium text-ceres-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white lg:inline-flex"
           >
             Entrar
           </Link>
@@ -133,6 +129,13 @@ export function Header() {
               </li>
             ))}
             <li className="border-t border-ceres-sand-soft pt-3 mt-1 space-y-2">
+              <Link
+                href="/produtos"
+                onClick={() => setMenuOpen(false)}
+                className="block rounded-full bg-ceres-terracotta-dark py-3 text-center text-base font-semibold text-white"
+              >
+                Loja Online
+              </Link>
               <Link
                 href="/seja-revendedor"
                 onClick={() => setMenuOpen(false)}
