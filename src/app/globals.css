@@ -1,26 +1,52 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+/* =========================================================================
+   CERES BRASIL — Identidade visual
+   Paleta inspirada no site atual ceresbrasil.lojavirtualnuvem.com.br
+   ========================================================================= */
+@theme {
+  --color-ceres-green-dark: #1a5c38;
+  --color-ceres-green: #2d8a57;
+  --color-ceres-green-soft: #e8f1ec;
+  --color-ceres-cream: #fafaf8;
+  --color-ceres-gold: #c8960c;
+  --color-ceres-gold-soft: #f5e9c4;
+  --color-ceres-dark: #1a1a1a;
+  --color-ceres-muted: #6b7280;
+
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-ceres-cream);
+  --foreground: var(--color-ceres-dark);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Focus ring acessivel padrao */
+*:focus-visible {
+  outline: 2px solid var(--color-ceres-green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Container reutilizavel */
+.container-ceres {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-ceres {
+    padding-inline: 2rem;
+  }
 }
