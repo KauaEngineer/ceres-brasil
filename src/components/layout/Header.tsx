@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const navLinks = [
@@ -13,7 +14,11 @@ const navLinks = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const cartCount = 0; // TODO: substituir por useCarrinho na Sprint 4
+  const pathname = usePathname();
+  const cartCount: number = 0; // TODO: substituir por useCarrinho na Sprint 4
+
+  // Carrinho só faz sentido nas páginas de loja
+  const mostrarCarrinho = pathname.startsWith('/produtos') || pathname.startsWith('/loja');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -39,7 +44,7 @@ export function Header() {
           : 'bg-ceres-cream/80 backdrop-blur-sm'
       }`}
     >
-      <div className="container-ceres flex h-16 items-center justify-between md:h-20">
+      <div className="flex h-16 items-center justify-between px-4 md:h-20 md:px-8 lg:px-12">
         <Link href="/" className="flex items-center" aria-label="Ceres Brasil — página inicial">
           <Image
             src="/logo-ceres.png"
@@ -51,12 +56,15 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Navegação principal">
+        <nav
+          className="hidden flex-1 items-center justify-center gap-10 md:flex"
+          aria-label="Navegação principal"
+        >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-ceres-dark transition-colors hover:text-ceres-terracotta-dark"
+              className="text-base font-medium text-ceres-dark transition-colors hover:text-ceres-terracotta-dark"
             >
               {link.label}
             </Link>
@@ -64,18 +72,20 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2 md:gap-4">
-          <button
-            type="button"
-            className="relative rounded-full p-2 transition-colors hover:bg-ceres-sand-soft"
-            aria-label={`Carrinho com ${cartCount} ${cartCount === 1 ? 'item' : 'itens'}`}
-          >
-            <CartIcon className="h-5 w-5 text-ceres-dark" />
-            {cartCount > 0 && (
-              <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-ceres-gold text-xs font-bold text-white">
-                {cartCount}
-              </span>
-            )}
-          </button>
+          {mostrarCarrinho && (
+            <button
+              type="button"
+              className="relative rounded-full p-2 transition-colors hover:bg-ceres-sand-soft"
+              aria-label={`Carrinho com ${cartCount} ${cartCount === 1 ? 'item' : 'itens'}`}
+            >
+              <CartIcon className="h-5 w-5 text-ceres-dark" />
+              {cartCount > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-ceres-gold text-xs font-bold text-white">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+          )}
 
           <Link
             href="/produtos"

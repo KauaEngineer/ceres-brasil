@@ -63,6 +63,16 @@ export async function proxy(request: NextRequest) {
     }
   }
 
+  // Protege /conta/* — requer login
+  if (pathname.startsWith('/conta')) {
+    if (!user) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/login';
+      url.searchParams.set('redirect', pathname);
+      return NextResponse.redirect(url);
+    }
+  }
+
   // Protege /loja/b2b/* — DESATIVADO ate Sprint 3 (sem /login ainda).
   // Quando o fluxo de auth existir, descomentar abaixo:
   // if (pathname.startsWith('/loja/b2b')) {
