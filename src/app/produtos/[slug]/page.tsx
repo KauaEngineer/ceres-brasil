@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ProductCard, formatarPreco } from '@/components/produtos/ProductCard';
@@ -65,10 +66,18 @@ export default async function ProdutoDetalhePage({ params }: Props) {
       {/* Detalhe principal */}
       <section className="container-ceres py-8 md:py-12">
         <div className="grid gap-10 md:grid-cols-2">
-          {/* Galeria (placeholder com gradiente — substituir por fotos reais na Sprint 4) */}
+          {/* Galeria — usa foto real (placeholder de exemplo ate sync com Bling) */}
           <div>
-            <div className="relative aspect-square overflow-hidden rounded-3xl bg-gradient-to-br from-ceres-sand-soft via-ceres-cream to-ceres-gold-soft">
-              <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-dark">
+            <div className="relative aspect-square overflow-hidden rounded-3xl bg-white border border-ceres-sand-soft">
+              <Image
+                src={produto.fotos[0] ?? '/produto-exemplo.png'}
+                alt={produto.nome}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain p-6"
+                priority
+              />
+              <span className="absolute left-4 top-4 rounded-full bg-ceres-sand-soft px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
                 Sem glúten
               </span>
               {esgotado && (

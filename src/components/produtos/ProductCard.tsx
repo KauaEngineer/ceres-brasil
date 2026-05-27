@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Produto } from '@/types/produto';
 
@@ -12,8 +13,15 @@ export function ProductCard({ produto }: { produto: Produto }) {
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-ceres-sand-soft bg-white transition-shadow hover:shadow-lg">
       <Link href={`/produtos/${produto.slug}`} className="block">
-        <div className="relative aspect-square bg-gradient-to-br from-ceres-sand-soft to-ceres-gold-soft">
-          <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-dark">
+        <div className="relative aspect-square bg-white">
+          <Image
+            src={produto.fotos[0] ?? '/produto-exemplo.png'}
+            alt={produto.nome}
+            fill
+            sizes="(max-width: 768px) 50vw, 25vw"
+            className="object-contain p-3"
+          />
+          <span className="absolute left-3 top-3 rounded-full bg-ceres-sand-soft px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
             Sem glúten
           </span>
           {esgotado && (

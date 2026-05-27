@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { WhatsAppFloating } from '@/components/layout/WhatsAppFloating';
+import { DemoAccessButton } from '@/components/dev/DemoAccessButton';
 import { CookieBanner } from '@/components/ui/CookieBanner';
 import { ToastProvider } from '@/hooks/useToast';
 import './globals.css';
@@ -37,6 +38,7 @@ export default function RootLayout({
           <Footer />
           <WhatsAppFloating />
           <CookieBanner />
+          <DemoAccessButton />
         </ToastProvider>
       </body>
     </html>

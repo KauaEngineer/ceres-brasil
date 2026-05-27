@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Produto } from '@/types/produto';
 
@@ -12,7 +13,14 @@ export function B2BProductCard({ produto }: { produto: Produto }) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-colors hover:border-ceres-teal/60">
       <Link href={`/produtos/${produto.slug}`} className="block">
-        <div className="relative aspect-square bg-gradient-to-br from-white/20 to-white/5">
+        <div className="relative aspect-square bg-white">
+          <Image
+            src={produto.fotos[0] ?? '/produto-exemplo.png'}
+            alt={produto.nome}
+            fill
+            sizes="(max-width: 768px) 50vw, 25vw"
+            className="object-contain p-3"
+          />
           <span className="absolute left-3 top-3 rounded-full bg-ceres-gold px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ceres-charcoal">
             Revenda
           </span>
