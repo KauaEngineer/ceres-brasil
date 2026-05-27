@@ -69,28 +69,51 @@ export default function QuemSomosPage() {
 
       {/* HISTÓRIA */}
       <section className="py-20 md:py-28">
-        <div className="container-ceres grid items-center gap-12 md:grid-cols-2">
+        <div className="container-ceres grid items-start gap-12 md:grid-cols-2">
           <div>
             <SectionTitle
               eyebrow="História"
-              title="Da inquietação à mesa de muitas famílias"
+              title="Começou pequena, sempre quis fazer diferente."
               align="left"
             />
             <div className="mt-6 space-y-4 text-base leading-relaxed text-ceres-muted md:text-lg">
               <p>
-                A Ceres Brasil surgiu da percepção de que opções sem glúten no Brasil eram caras,
-                limitadas ou pouco nutritivas. Quem precisava evitar trigo encontrava prateleiras
-                vazias e produtos sem alma.
+                A Ceres Brasil nasceu de um jeito simples: sem grandes planos, sem estrutura e sem
+                imaginar onde aquilo poderia chegar. Tudo começou com uma ideia, vontade de
+                empreender e MUITO esforço.
               </p>
               <p>
-                Começamos pequenos, em São Paulo, desenvolvendo massas à base de farinha de grão de
-                bico e lentilha — leguminosas ricas em proteína, fibra e sabor. Hoje atendemos
-                clientes em todo o Brasil e abrimos portas para revendedores que compartilham essa
-                missão.
+                Nossa primeira aposta foi uma massa sabor tradicional com farinha de grão de bico.
+                Na época, a intenção não era criar um produto fitness, saudável ou sem glúten. A
+                verdade é que nem sabíamos o potencial que aquele produto tinha. Aos poucos, fomos
+                entendendo que estávamos oferecendo algo diferente: uma massa rica em proteínas,
+                fonte de fibras e naturalmente sem glúten.
+              </p>
+              <p>
+                O que começou de forma despretensiosa foi crescendo através da curiosidade, dos
+                testes, dos erros e da vontade de fazer dar certo. Cada etapa foi construída na
+                prática, aprendendo diariamente sobre ingredientes, processos e sobre o que
+                realmente importa: entregar um produto de qualidade.
+              </p>
+              <p>
+                Hoje, a Ceres Brasil produz massas, farinhas e grãos à base de leguminosas como
+                grão de bico e lentilha, levando alimentação prática e nutritiva para consumidores
+                em todo o Brasil. Mesmo com o crescimento, mantemos a mesma essência do começo:
+                criar produtos com ingredientes de verdade, sem exageros e com cuidado em cada
+                detalhe.
+              </p>
+              <p>
+                Também abrimos espaço para parceiros e revendedores que acreditam nessa mesma
+                visão. Porque mais do que vender alimentos, queremos construir uma marca que nasceu
+                pequena, mas sempre teve vontade de fazer diferente.
               </p>
             </div>
           </div>
-          <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-ceres-gold-soft via-ceres-cream to-ceres-sand-soft" />
+          <div className="flex aspect-[4/5] items-center justify-center rounded-3xl border border-ceres-terracotta-dark/40 md:sticky md:top-28">
+            <span className="text-sm font-medium uppercase tracking-[0.3em] text-ceres-muted">
+              Imagem
+            </span>
+          </div>
         </div>
       </section>
 
