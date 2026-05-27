@@ -9,6 +9,30 @@ export interface DadosCadastroPF {
   telefone?: string;
 }
 
+export interface DadosContaPJ {
+  nome: string;
+  email: string;
+  senha: string;
+  telefone?: string;
+}
+
+/**
+ * Cria o usuário PJ no Supabase Auth. O trigger handle_new_user cria o profile
+ * com tipo='pj'. A criação da empresa + upload de documentos acontece depois,
+ * via /api/cadastro-pj (service role).
+ */
+export async function signUpPJ({ nome, email, senha, telefone }: DadosContaPJ) {
+  const supabase = createClient();
+  return supabase.auth.signUp({
+    email,
+    password: senha,
+    options: {
+      data: { nome, tipo: 'pj', telefone: telefone ?? null },
+      emailRedirectTo: `${window.location.origin}/aguardando-aprovacao`,
+    },
+  });
+}
+
 /** Login com e-mail e senha. */
 export async function signIn(email: string, senha: string) {
   const supabase = createClient();
