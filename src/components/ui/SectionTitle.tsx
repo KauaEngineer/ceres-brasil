@@ -26,7 +26,7 @@ export function SectionTitle({
           {eyebrow}
         </p>
       )}
-      <h2 className="mt-2 text-3xl font-light tracking-tight text-ceres-terracotta-dark md:text-4xl">
+      <h2 className="mt-2 text-3xl font-light tracking-tight text-ceres-dark md:text-4xl">
         {title}
       </h2>
       {description && (

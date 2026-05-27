@@ -67,7 +67,7 @@ export default function ContatoPage() {
                     rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="flex items-center gap-4 rounded-2xl border border-ceres-sand-soft bg-white p-4 transition-shadow hover:shadow-md"
                   >
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ceres-sand-soft text-ceres-terracotta-dark">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ceres-sand-soft text-ceres-dark">
                       {c.icon}
                     </div>
                     <div>
@@ -84,7 +84,7 @@ export default function ContatoPage() {
             {/* Endereço */}
             <div className="mt-8 rounded-2xl border border-ceres-sand-soft bg-ceres-sand-soft/40 p-6">
               <div className="flex gap-3">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-ceres-terracotta-dark">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-ceres-dark">
                   <PinIcon />
                 </div>
                 <div>

@@ -58,7 +58,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-full bg-ceres-terracotta-soft px-4 py-1.5 text-sm font-semibold text-ceres-terracotta-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white"
+                className="rounded-full bg-ceres-terracotta-soft px-4 py-1.5 text-sm font-semibold text-ceres-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white"
               >
                 {link.label}
               </Link>
@@ -97,7 +97,7 @@ export function Header() {
 
           <Link
             href="/login"
-            className="hidden rounded-full border border-ceres-terracotta-dark px-5 py-2 text-sm font-medium text-ceres-terracotta-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white md:inline-flex"
+            className="hidden rounded-full border border-ceres-terracotta-dark px-5 py-2 text-sm font-medium text-ceres-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white md:inline-flex"
           >
             Entrar
           </Link>
@@ -143,7 +143,7 @@ export function Header() {
               <Link
                 href="/login"
                 onClick={() => setMenuOpen(false)}
-                className="block rounded-full border border-ceres-terracotta-dark py-3 text-center text-base font-medium text-ceres-terracotta-dark"
+                className="block rounded-full border border-ceres-terracotta-dark py-3 text-center text-base font-medium text-ceres-dark"
               >
                 Entrar
               </Link>

@@ -33,7 +33,7 @@ export function Footer() {
 
         {/* Navegacao */}
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-ceres-dark">
             Navegação
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
@@ -79,7 +79,7 @@ export function Footer() {
 
         {/* Contato */}
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-ceres-dark">
             Contato
           </h3>
           <ul className="mt-4 space-y-3 text-sm text-ceres-muted">
@@ -138,7 +138,7 @@ export function Footer() {
 function Seal({ icon, title }: { icon: React.ReactNode; title: string }) {
   return (
     <div className="flex items-center gap-3">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-ceres-terracotta-dark">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-ceres-dark">
         {icon}
       </div>
       <span className="text-sm font-medium text-ceres-dark">{title}</span>

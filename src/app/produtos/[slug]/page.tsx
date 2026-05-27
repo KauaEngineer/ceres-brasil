@@ -68,7 +68,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
           {/* Galeria (placeholder com gradiente — substituir por fotos reais na Sprint 4) */}
           <div>
             <div className="relative aspect-square overflow-hidden rounded-3xl bg-gradient-to-br from-ceres-sand-soft via-ceres-cream to-ceres-gold-soft">
-              <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
+              <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-dark">
                 Sem glúten
               </span>
               {esgotado && (
@@ -86,7 +86,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
             <p className="text-xs font-semibold uppercase tracking-wider text-ceres-gold">
               {categoriaRotulo(produto.categoria)}
             </p>
-            <h1 className="mt-2 text-3xl font-light tracking-tight text-ceres-terracotta-dark md:text-4xl">
+            <h1 className="mt-2 text-3xl font-light tracking-tight text-ceres-dark md:text-4xl">
               {produto.nome}
             </h1>
 
@@ -104,7 +104,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
             )}
 
             <div className="mt-8 rounded-2xl border border-ceres-sand-soft bg-white p-6">
-              <p className="text-3xl font-light text-ceres-terracotta-dark md:text-4xl">
+              <p className="text-3xl font-light text-ceres-dark md:text-4xl">
                 {formatarPreco(produto.precoB2C)}
               </p>
               <p className="mt-1 text-xs text-ceres-muted">
@@ -147,7 +147,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
             {/* Ingredientes */}
             {produto.ingredientes.length > 0 && (
               <div className="mt-6">
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-ceres-dark">
                   Ingredientes
                 </h2>
                 <p className="mt-2 text-sm text-ceres-muted">{produto.ingredientes.join(', ')}.</p>
@@ -168,7 +168,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
           />
           <div className="mt-8 overflow-hidden rounded-2xl border border-ceres-sand-soft">
             <table className="w-full text-left text-sm">
-              <thead className="bg-ceres-sand-soft text-ceres-terracotta-dark">
+              <thead className="bg-ceres-sand-soft text-ceres-dark">
                 <tr>
                   <th className="px-5 py-3 font-semibold">Nutriente</th>
                   <th className="px-5 py-3 text-right font-semibold">Quantidade</th>
@@ -213,7 +213,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="rounded-full bg-ceres-sand-soft px-3 py-1 text-xs font-semibold text-ceres-terracotta-dark">
+    <span className="rounded-full bg-ceres-sand-soft px-3 py-1 text-xs font-semibold text-ceres-dark">
       {children}
     </span>
   );

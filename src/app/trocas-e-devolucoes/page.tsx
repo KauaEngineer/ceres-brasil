@@ -49,7 +49,7 @@ export default function TrocasPage() {
               Envie e-mail para{' '}
               <a
                 href="mailto:contato@ceresbrasil.com.br"
-                className="font-medium text-ceres-terracotta-dark underline"
+                className="font-medium text-ceres-dark underline"
               >
                 contato@ceresbrasil.com.br
               </a>{' '}
@@ -107,7 +107,7 @@ export default function TrocasPage() {
             <strong>@ceresbrasil</strong> ou e-mail{' '}
             <a
               href="mailto:contato@ceresbrasil.com.br"
-              className="font-medium text-ceres-terracotta-dark underline"
+              className="font-medium text-ceres-dark underline"
             >
               contato@ceresbrasil.com.br
             </a>
@@ -122,7 +122,7 @@ export default function TrocasPage() {
 function Section({ titulo, children }: { titulo: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-xl font-medium text-ceres-terracotta-dark md:text-2xl">{titulo}</h2>
+      <h2 className="text-xl font-medium text-ceres-dark md:text-2xl">{titulo}</h2>
       <div className="mt-3 text-ceres-muted">{children}</div>
     </section>
   );

@@ -71,7 +71,7 @@ export function HeroCarousel() {
               </p>
               <Link
                 href={s.cta.href}
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-ceres-terracotta-dark transition-transform hover:scale-105"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-ceres-dark transition-transform hover:scale-105"
               >
                 {s.cta.label}
                 <span aria-hidden="true">→</span>

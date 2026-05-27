@@ -111,7 +111,7 @@ export default function QuemSomosPage() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ceres-terracotta-dark text-white">
                   {v.icone}
                 </div>
-                <h3 className="mt-5 text-xl font-medium text-ceres-terracotta-dark">{v.titulo}</h3>
+                <h3 className="mt-5 text-xl font-medium text-ceres-dark">{v.titulo}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ceres-muted">{v.texto}</p>
               </article>
             ))}
@@ -133,7 +133,7 @@ export default function QuemSomosPage() {
                 key={n.rotulo}
                 className="rounded-2xl bg-white border border-ceres-sand-soft p-6 text-center"
               >
-                <p className="text-4xl font-light text-ceres-terracotta-dark md:text-5xl">{n.valor}</p>
+                <p className="text-4xl font-light text-ceres-dark md:text-5xl">{n.valor}</p>
                 <p className="mt-2 text-sm font-medium uppercase tracking-wide text-ceres-muted">
                   {n.rotulo}
                 </p>
@@ -206,7 +206,7 @@ export default function QuemSomosPage() {
       <section className="pb-24">
         <div className="container-ceres">
           <div className="rounded-3xl bg-ceres-gold-soft p-10 text-center md:p-16">
-            <h2 className="text-3xl font-light text-ceres-terracotta-dark md:text-4xl">
+            <h2 className="text-3xl font-light text-ceres-dark md:text-4xl">
               Pronto pra experimentar?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-ceres-muted md:text-lg">

@@ -40,14 +40,14 @@ export function ContatoForm() {
             />
           </svg>
         </div>
-        <h3 className="mt-4 text-xl font-bold text-ceres-terracotta-dark">Mensagem enviada!</h3>
+        <h3 className="mt-4 text-xl font-bold text-ceres-dark">Mensagem enviada!</h3>
         <p className="mt-2 text-sm text-ceres-muted">
           Recebemos sua mensagem. Vamos responder em até 1 dia útil.
         </p>
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-5 text-sm font-medium text-ceres-terracotta-dark underline"
+          className="mt-5 text-sm font-medium text-ceres-dark underline"
         >
           Enviar outra mensagem
         </button>

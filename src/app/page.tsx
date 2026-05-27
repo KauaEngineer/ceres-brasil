@@ -68,7 +68,7 @@ export default function Home() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ceres-terracotta-dark text-white">
                   {p.icon}
                 </div>
-                <h3 className="mt-5 text-xl font-medium text-ceres-terracotta-dark">{p.titulo}</h3>
+                <h3 className="mt-5 text-xl font-medium text-ceres-dark">{p.titulo}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ceres-muted">{p.texto}</p>
               </article>
             ))}
@@ -106,7 +106,7 @@ export default function Home() {
             </div>
             <Link
               href="/quem-somos"
-              className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-ceres-terracotta-dark px-6 py-3 text-sm font-semibold text-ceres-terracotta-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white"
+              className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-ceres-terracotta-dark px-6 py-3 text-sm font-semibold text-ceres-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white"
             >
               Conheça nossa história completa
               <span aria-hidden="true">→</span>
@@ -188,7 +188,7 @@ export default function Home() {
                 key={b.title}
                 className="flex flex-col items-center text-center md:flex-row md:items-start md:gap-4 md:text-left"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-ceres-sand-soft text-ceres-terracotta-dark">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-ceres-sand-soft text-ceres-dark">
                   {b.icon}
                 </div>
                 <div className="mt-3 md:mt-0">

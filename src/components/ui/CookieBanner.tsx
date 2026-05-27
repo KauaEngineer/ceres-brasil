@@ -35,7 +35,7 @@ export function CookieBanner() {
     >
       <div className="rounded-2xl border border-ceres-sand-soft bg-white p-5 shadow-2xl md:p-6">
         <div className="flex items-start gap-3">
-          <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ceres-sand-soft text-ceres-terracotta-dark md:flex">
+          <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ceres-sand-soft text-ceres-dark md:flex">
             <CookieIcon />
           </div>
           <div className="flex-1">
@@ -47,7 +47,7 @@ export function CookieBanner() {
               só com seu consentimento.{' '}
               <Link
                 href="/politica-de-privacidade"
-                className="font-medium text-ceres-terracotta-dark underline"
+                className="font-medium text-ceres-dark underline"
               >
                 Ver política
               </Link>

@@ -13,7 +13,7 @@ export function ProductCard({ produto }: { produto: Produto }) {
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-ceres-sand-soft bg-white transition-shadow hover:shadow-lg">
       <Link href={`/produtos/${produto.slug}`} className="block">
         <div className="relative aspect-square bg-gradient-to-br from-ceres-sand-soft to-ceres-gold-soft">
-          <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
+          <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-dark">
             Sem glúten
           </span>
           {esgotado && (
@@ -36,7 +36,7 @@ export function ProductCard({ produto }: { produto: Produto }) {
         >
           {produto.nome}
         </Link>
-        <p className="mt-auto pt-3 text-lg font-bold text-ceres-terracotta-dark md:text-xl">
+        <p className="mt-auto pt-3 text-lg font-bold text-ceres-dark md:text-xl">
           {formatarPreco(produto.precoB2C)}
         </p>
         <button
