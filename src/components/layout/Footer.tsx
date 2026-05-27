@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export function Footer() {
@@ -17,12 +18,13 @@ export function Footer() {
       <div className="container-ceres grid gap-12 py-14 md:grid-cols-4">
         {/* Coluna marca */}
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2">
-            <LeafIcon className="h-7 w-7 text-ceres-green-dark" />
-            <span className="text-xl font-bold text-ceres-green-dark">
-              Ceres <span className="text-ceres-gold">Brasil</span>
-            </span>
-          </div>
+          <Image
+            src="/logo-ceres.png"
+            alt="Ceres Brasil — Produtos Artesanais"
+            width={120}
+            height={120}
+            className="h-20 w-auto"
+          />
           <p className="mt-4 max-w-md text-sm text-ceres-muted">
             Alimentos naturais sem glúten — massas, farinhas e grãos com qualidade nutricional.
             Atendemos consumidores e revendedores em todo o território nacional.
@@ -145,19 +147,6 @@ function Seal({ icon, title }: { icon: React.ReactNode; title: string }) {
 }
 
 /* ---------- icones inline ---------- */
-
-function LeafIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <path
-        d="M17 8C8 10 5 16 3 21l1.5.5C8 15 11 13 17 12c-3 4-3 6-7 9 5 0 9-2 11-5 3-3 3-9 3-12-3 0-9 1-12 4"
-        fill="currentColor"
-        stroke="currentColor"
-        strokeWidth="0.5"
-      />
-    </svg>
-  );
-}
 
 function TruckIcon() {
   return (

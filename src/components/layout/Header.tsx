@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -40,11 +41,15 @@ export function Header() {
       }`}
     >
       <div className="container-ceres flex h-16 items-center justify-between md:h-20">
-        <Link href="/" className="flex items-center gap-2" aria-label="Ceres Brasil — página inicial">
-          <LeafIcon className="h-7 w-7 text-ceres-green-dark" />
-          <span className="text-xl font-bold tracking-tight text-ceres-green-dark md:text-2xl">
-            Ceres <span className="text-ceres-gold">Brasil</span>
-          </span>
+        <Link href="/" className="flex items-center" aria-label="Ceres Brasil — página inicial">
+          <Image
+            src="/logo-ceres.png"
+            alt="Ceres Brasil — Produtos Artesanais"
+            width={120}
+            height={120}
+            priority
+            className="h-12 w-auto md:h-14"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
@@ -127,20 +132,6 @@ export function Header() {
 }
 
 /* ---------- icones (SVG inline, sem dependencias extras) ---------- */
-
-function LeafIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <path
-        d="M17 8C8 10 5 16 3 21l1.5.5C8 15 11 13 17 12c-3 4-3 6-7 9 5 0 9-2 11-5 3-3 3-9 3-12-3 0-9 1-12 4"
-        fill="currentColor"
-        stroke="currentColor"
-        strokeWidth="0.5"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 function CartIcon({ className }: { className?: string }) {
   return (

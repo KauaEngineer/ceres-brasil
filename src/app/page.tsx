@@ -1,40 +1,10 @@
 import Link from 'next/link';
 import { HeroCarousel } from '@/components/home/HeroCarousel';
 import { Newsletter } from '@/components/home/Newsletter';
+import { ProductCard } from '@/components/produtos/ProductCard';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-
-const produtosDestaque = [
-  {
-    nome: 'Talharim de Grão de Bico — Tradicional',
-    categoria: 'Massas sem glúten',
-    preco: 'R$ 22,90',
-  },
-  {
-    nome: 'Talharim de Lentilha Vermelha',
-    categoria: 'Massas sem glúten',
-    preco: 'R$ 24,90',
-  },
-  {
-    nome: 'Fusilli de Lentilha Amarela',
-    categoria: 'Massas sem glúten',
-    preco: 'R$ 24,90',
-  },
-  {
-    nome: 'Talharim de Grão de Bico — Funghi',
-    categoria: 'Massas sem glúten',
-    preco: 'R$ 26,90',
-  },
-  {
-    nome: 'Farinha de Grão de Bico',
-    categoria: 'Farinhas',
-    preco: 'R$ 18,90',
-  },
-  {
-    nome: 'Talharim de Grão de Bico — Tomate Seco',
-    categoria: 'Massas sem glúten',
-    preco: 'R$ 26,90',
-  },
-];
+import { listarDestaques } from '@/lib/mock/produtos';
+import { CATEGORIAS } from '@/types/produto';
 
 const trustBadges = [
   { icon: <FreteIcon />, title: 'Frete para todo Brasil', text: 'Despachamos em até 48h' },
@@ -43,59 +13,112 @@ const trustBadges = [
   { icon: <ChatIcon />, title: 'Atendimento humano', text: 'WhatsApp 11 92477-1165' },
 ];
 
+// Imagens placeholder por categoria — gradientes ate ter fotos reais
+const gradientesCategoria: Record<string, string> = {
+  massas: 'from-ceres-green-dark via-ceres-green to-ceres-green-soft',
+  farinhas: 'from-ceres-gold via-ceres-gold-soft to-ceres-cream',
+  graos: 'from-ceres-green to-ceres-gold-soft',
+};
+
 export default function Home() {
+  const destaques = listarDestaques(4);
+
   return (
     <>
-      {/* HERO — carrossel */}
+      {/* 1. HERO */}
       <section aria-label="Banners destaque">
         <HeroCarousel />
       </section>
 
-      {/* DESTAQUES */}
-      <section className="py-16 md:py-24">
+      {/* 2. SOBRE A CERES — teaser institucional */}
+      <section className="py-20 md:py-28">
+        <div className="container-ceres grid items-center gap-12 md:grid-cols-2">
+          <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-ceres-green-soft via-ceres-cream to-ceres-gold-soft md:order-2" />
+          <div className="md:order-1">
+            <SectionTitle
+              eyebrow="Nossa história"
+              title="Comida boa não precisa ter glúten."
+              align="left"
+            />
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-ceres-muted md:text-lg">
+              <p>
+                A Ceres Brasil nasceu em São Paulo da inquietação de quem queria comer bem sem
+                abrir mão de sabor e nutrição. Trabalhamos com farinhas de leguminosas — grão de
+                bico, lentilha, ervilha — pra entregar massas, farinhas e grãos que rendem
+                refeições completas.
+              </p>
+              <p>
+                Cada lote é cuidado de perto. Sem aditivos artificiais, sem complicação. Só
+                ingrediente bom virando comida boa.
+              </p>
+            </div>
+            <Link
+              href="/quem-somos"
+              className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-ceres-green-dark px-6 py-3 text-sm font-semibold text-ceres-green-dark transition-colors hover:bg-ceres-green-dark hover:text-white"
+            >
+              Conheça nossa história
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. CATEGORIAS — cards visuais */}
+      <section className="bg-white py-20 md:py-28">
         <div className="container-ceres">
           <SectionTitle
-            eyebrow="Catálogo"
-            title="Produtos em destaque"
-            description="Massas, farinhas e grãos sem glúten produzidos com qualidade nutricional."
+            eyebrow="O que produzimos"
+            title="Nossas categorias"
+            description="Três famílias de produtos pra compor refeições nutritivas no dia a dia."
+          />
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {CATEGORIAS.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/produtos?categoria=${c.slug}`}
+                className="group relative aspect-[4/5] overflow-hidden rounded-3xl"
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${gradientesCategoria[c.slug]} transition-transform duration-500 group-hover:scale-105`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-8 text-white">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/80">
+                    Categoria
+                  </p>
+                  <h3 className="mt-2 text-2xl font-bold md:text-3xl">{c.rotuloPlural}</h3>
+                  <p className="mt-3 inline-flex items-center gap-2 text-sm font-medium">
+                    Explorar
+                    <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. DESTAQUES — curadoria pequena */}
+      <section className="py-20 md:py-28">
+        <div className="container-ceres">
+          <SectionTitle
+            eyebrow="Vitrine"
+            title="Em destaque agora"
+            description="Quatro produtos selecionados pra começar."
           />
 
-          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-3">
-            {produtosDestaque.map((p) => (
-              <article
-                key={p.nome}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-ceres-green-soft bg-white transition-shadow hover:shadow-lg"
-              >
-                <div className="relative aspect-square bg-gradient-to-br from-ceres-green-soft to-ceres-gold-soft">
-                  <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-green-dark">
-                    Sem glúten
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-4">
-                  <p className="text-xs font-medium uppercase tracking-wider text-ceres-gold">
-                    {p.categoria}
-                  </p>
-                  <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-ceres-dark md:text-base">
-                    {p.nome}
-                  </h3>
-                  <p className="mt-3 text-lg font-bold text-ceres-green-dark md:text-xl">
-                    {p.preco}
-                  </p>
-                  <button
-                    type="button"
-                    className="mt-3 w-full rounded-full bg-ceres-green-dark px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-ceres-green"
-                  >
-                    Adicionar
-                  </button>
-                </div>
-              </article>
+          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+            {destaques.map((p) => (
+              <ProductCard key={p.id} produto={p} />
             ))}
           </div>
 
           <div className="mt-12 text-center">
             <Link
               href="/produtos"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-ceres-green-dark px-6 py-3 text-sm font-semibold text-ceres-green-dark transition-colors hover:bg-ceres-green-dark hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full bg-ceres-green-dark px-8 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
             >
               Ver catálogo completo
               <span aria-hidden="true">→</span>
@@ -104,7 +127,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SELOS DE CONFIANCA */}
+      {/* 5. SELOS DE CONFIANÇA */}
       <section className="bg-white py-12 md:py-16">
         <div className="container-ceres">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -126,7 +149,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NEWSLETTER */}
+      {/* 6. NEWSLETTER */}
       <section className="py-16 md:py-24">
         <Newsletter />
       </section>
@@ -134,7 +157,7 @@ export default function Home() {
   );
 }
 
-/* ---------- icones dos selos ---------- */
+/* ---------- ícones dos selos ---------- */
 
 function FreteIcon() {
   return (
