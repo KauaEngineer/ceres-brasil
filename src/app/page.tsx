@@ -31,12 +31,12 @@ export default function Home() {
       </section>
 
       {/* 2. SOBRE A CERES — teaser institucional */}
-      <section className="py-20 md:py-28">
+      <section id="sobre" className="scroll-mt-24 py-20 md:py-28">
         <div className="container-ceres grid items-center gap-12 md:grid-cols-2">
           <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-ceres-green-soft via-ceres-cream to-ceres-gold-soft md:order-2" />
           <div className="md:order-1">
             <SectionTitle
-              eyebrow="Nossa história"
+              eyebrow="Quem somos"
               title="Comida boa não precisa ter glúten."
               align="left"
             />

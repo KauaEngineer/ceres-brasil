@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} h-full`}>
+    <html lang="pt-BR" className={`${inter.variable} h-full scroll-smooth`}>
       <body className="flex min-h-full flex-col bg-ceres-cream text-ceres-dark">
         <Header />
         <main className="flex-1 pt-16 md:pt-20">{children}</main>

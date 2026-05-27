@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 const navLinks = [
   { href: '/', label: 'Início' },
   { href: '/produtos', label: 'Produtos' },
-  { href: '/quem-somos', label: 'Quem Somos' },
+  { href: '/#sobre', label: 'Quem Somos' },
   { href: '/contato', label: 'Contato' },
 ];
 
@@ -79,8 +79,15 @@ export function Header() {
           </button>
 
           <Link
+            href="/seja-revendedor"
+            className="hidden rounded-full bg-ceres-gold px-5 py-2 text-sm font-semibold text-ceres-dark transition-transform hover:scale-105 lg:inline-flex"
+          >
+            Seja revendedor
+          </Link>
+
+          <Link
             href="/login"
-            className="hidden rounded-full bg-ceres-green-dark px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-ceres-green md:inline-flex"
+            className="hidden rounded-full border border-ceres-green-dark px-5 py-2 text-sm font-medium text-ceres-green-dark transition-colors hover:bg-ceres-green-dark hover:text-white md:inline-flex"
           >
             Entrar
           </Link>
@@ -115,11 +122,18 @@ export function Header() {
                 </Link>
               </li>
             ))}
-            <li className="border-t border-ceres-green-soft pt-3 mt-1">
+            <li className="border-t border-ceres-green-soft pt-3 mt-1 space-y-2">
+              <Link
+                href="/seja-revendedor"
+                onClick={() => setMenuOpen(false)}
+                className="block rounded-full bg-ceres-gold py-3 text-center text-base font-semibold text-ceres-dark"
+              >
+                Seja revendedor
+              </Link>
               <Link
                 href="/login"
                 onClick={() => setMenuOpen(false)}
-                className="block rounded-full bg-ceres-green-dark py-3 text-center text-base font-medium text-white"
+                className="block rounded-full border border-ceres-green-dark py-3 text-center text-base font-medium text-ceres-green-dark"
               >
                 Entrar
               </Link>
