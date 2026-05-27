@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { BotaoAdicionar } from '@/components/carrinho/BotaoAdicionar';
 import type { Produto } from '@/types/produto';
 
 /**
  * Card de produto reutilizavel — usado na listagem, destaques da home e relacionados.
- * Server Component (sem interatividade no card em si; o botao "Adicionar" sera plugado
- * com useCarrinho na Sprint 4).
+ * Server Component; o botão "Adicionar" é client (BotaoAdicionar).
  */
 export function ProductCard({ produto }: { produto: Produto }) {
   const esgotado = produto.estoque <= 0;
@@ -47,13 +47,7 @@ export function ProductCard({ produto }: { produto: Produto }) {
         <p className="mt-auto pt-3 text-lg font-bold text-ceres-dark md:text-xl">
           {formatarPreco(produto.precoB2C)}
         </p>
-        <button
-          type="button"
-          disabled={esgotado}
-          className="mt-3 w-full rounded-full bg-ceres-terracotta-dark px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-ceres-terracotta disabled:cursor-not-allowed disabled:bg-ceres-muted disabled:opacity-60"
-        >
-          {esgotado ? 'Indisponível' : 'Adicionar'}
-        </button>
+        <BotaoAdicionar produto={produto} />
       </div>
     </article>
   );

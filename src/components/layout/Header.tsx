@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { calcularQuantidadeTotal, useCarrinho } from '@/hooks/useCarrinho';
 
 const navLinks = [
   { href: '/', label: 'Início' },
@@ -14,11 +15,19 @@ const navLinks = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [montado, setMontado] = useState(false);
   const pathname = usePathname();
-  const cartCount: number = 0; // TODO: substituir por useCarrinho na Sprint 4
+
+  const itens = useCarrinho((s) => s.itens);
+  const abrirCarrinho = useCarrinho((s) => s.abrir);
+  // guard de hidratação: o carrinho vem do localStorage só no cliente,
+  // então só mostramos o contador depois de montar (evita mismatch SSR)
+  const cartCount = montado ? calcularQuantidadeTotal(itens) : 0;
 
   // Carrinho só faz sentido nas páginas de loja
   const mostrarCarrinho = pathname.startsWith('/produtos') || pathname.startsWith('/loja');
+
+  useEffect(() => setMontado(true), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -75,6 +84,7 @@ export function Header() {
           {mostrarCarrinho && (
             <button
               type="button"
+              onClick={abrirCarrinho}
               className="relative rounded-full p-2 transition-colors hover:bg-ceres-sand-soft"
               aria-label={`Carrinho com ${cartCount} ${cartCount === 1 ? 'item' : 'itens'}`}
             >

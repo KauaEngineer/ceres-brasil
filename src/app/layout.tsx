@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { WhatsAppFloating } from '@/components/layout/WhatsAppFloating';
+import { CarrinhoDrawer } from '@/components/carrinho/CarrinhoDrawer';
 import { DemoAccessButton } from '@/components/dev/DemoAccessButton';
 import { CookieBanner } from '@/components/ui/CookieBanner';
 import { ToastProvider } from '@/hooks/useToast';
@@ -36,6 +37,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-1 pt-16 md:pt-20">{children}</main>
           <Footer />
+          <CarrinhoDrawer />
           <WhatsAppFloating />
           <CookieBanner />
           <DemoAccessButton />

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { CompraDetalhe } from '@/components/carrinho/CompraDetalhe';
 import { ProductCard, formatarPreco } from '@/components/produtos/ProductCard';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import {
@@ -120,37 +121,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
                 {esgotado ? 'Indisponível no momento' : `${produto.estoque} unidades em estoque`}
               </p>
 
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <div className="flex items-center rounded-full border border-ceres-sand-soft">
-                  <button
-                    type="button"
-                    aria-label="Diminuir quantidade"
-                    disabled
-                    className="px-4 py-2 text-ceres-muted hover:text-ceres-terracotta-dark disabled:opacity-40"
-                  >
-                    −
-                  </button>
-                  <span className="min-w-[2rem] text-center text-sm font-semibold">1</span>
-                  <button
-                    type="button"
-                    aria-label="Aumentar quantidade"
-                    disabled
-                    className="px-4 py-2 text-ceres-muted hover:text-ceres-terracotta-dark disabled:opacity-40"
-                  >
-                    +
-                  </button>
-                </div>
-                <button
-                  type="button"
-                  disabled={esgotado}
-                  className="flex-1 rounded-full bg-ceres-terracotta-dark px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ceres-terracotta disabled:cursor-not-allowed disabled:bg-ceres-muted disabled:opacity-60"
-                >
-                  {esgotado ? 'Indisponível' : 'Adicionar ao carrinho'}
-                </button>
-              </div>
-              <p className="mt-3 text-xs text-ceres-muted">
-                Seletor + carrinho serão plugados na Sprint 4.
-              </p>
+              <CompraDetalhe produto={produto} />
             </div>
 
             {/* Ingredientes */}
