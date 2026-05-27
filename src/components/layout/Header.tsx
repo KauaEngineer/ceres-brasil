@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react';
 
 const navLinks = [
   { href: '/', label: 'Início' },
-  { href: '/quem-somos', label: 'Quem Somos' },
   { href: '/produtos', label: 'Produtos' },
-  { href: '/loja/b2b', label: 'Loja B2B' },
+  { href: '/quem-somos', label: 'Quem Somos' },
+  { href: '/contato', label: 'Contato' },
 ];
 
 export function Header() {

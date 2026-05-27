@@ -7,12 +7,13 @@
 @theme {
   --color-ceres-green-dark: #1a5c38;
   --color-ceres-green: #2d8a57;
-  --color-ceres-green-soft: #e8f1ec;
-  --color-ceres-cream: #fafaf8;
+  --color-ceres-green-soft: #e6efe9;
+  --color-ceres-cream: #f3ecda;
+  --color-ceres-paper: #faf6ec;
   --color-ceres-gold: #c8960c;
-  --color-ceres-gold-soft: #f5e9c4;
-  --color-ceres-dark: #1a1a1a;
-  --color-ceres-muted: #6b7280;
+  --color-ceres-gold-soft: #f0e3c2;
+  --color-ceres-dark: #2a2a2a;
+  --color-ceres-muted: #6b6760;
 
   --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
 }
@@ -28,6 +29,19 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Tipografia base — tracos finos / elegantes (estilo artesanal) */
+h1 {
+  font-weight: 300;
+  letter-spacing: -0.015em;
+}
+h2 {
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+h3 {
+  font-weight: 400;
 }
 
 /* Focus ring acessivel padrao */

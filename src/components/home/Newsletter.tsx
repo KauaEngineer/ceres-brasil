@@ -25,7 +25,7 @@ export function Newsletter() {
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ceres-gold">
               Newsletter
             </p>
-            <h2 className="mt-3 text-3xl font-bold leading-tight text-white md:text-4xl">
+            <h2 className="mt-3 text-3xl font-light leading-tight text-white md:text-4xl">
               Receba receitas e lançamentos
             </h2>
             <p className="mt-3 text-base text-white/80">

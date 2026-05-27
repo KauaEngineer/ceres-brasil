@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { WhatsAppFloating } from '@/components/layout/WhatsAppFloating';
+import { CookieBanner } from '@/components/ui/CookieBanner';
 import './globals.css';
 
 const inter = Inter({
@@ -31,6 +33,8 @@ export default function RootLayout({
         <Header />
         <main className="flex-1 pt-16 md:pt-20">{children}</main>
         <Footer />
+        <WhatsAppFloating />
+        <CookieBanner />
       </body>
     </html>
   );

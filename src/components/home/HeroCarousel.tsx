@@ -63,7 +63,7 @@ export function HeroCarousel() {
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/90">
                 {s.eyebrow}
               </p>
-              <h1 className="mt-4 whitespace-pre-line text-4xl font-bold leading-tight tracking-tight drop-shadow-md md:text-5xl lg:text-6xl">
+              <h1 className="mt-4 whitespace-pre-line text-4xl font-light leading-tight tracking-tight drop-shadow-md md:text-5xl lg:text-6xl">
                 {s.title}
               </h1>
               <p className="mt-5 max-w-md text-base text-white/95 drop-shadow md:text-lg">

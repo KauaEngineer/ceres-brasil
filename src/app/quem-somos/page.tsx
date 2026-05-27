@@ -54,7 +54,7 @@ export default function QuemSomosPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/90">
               Quem somos
             </p>
-            <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight drop-shadow-md md:text-6xl">
+            <h1 className="mt-4 text-4xl font-light leading-tight tracking-tight drop-shadow-md md:text-6xl">
               Nossa história começa
               <br />
               numa cozinha de São Paulo.
@@ -111,7 +111,7 @@ export default function QuemSomosPage() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ceres-green-dark text-white">
                   {v.icone}
                 </div>
-                <h3 className="mt-5 text-xl font-bold text-ceres-green-dark">{v.titulo}</h3>
+                <h3 className="mt-5 text-xl font-medium text-ceres-green-dark">{v.titulo}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ceres-muted">{v.texto}</p>
               </article>
             ))}
@@ -133,7 +133,7 @@ export default function QuemSomosPage() {
                 key={n.rotulo}
                 className="rounded-2xl bg-white border border-ceres-green-soft p-6 text-center"
               >
-                <p className="text-4xl font-bold text-ceres-green-dark md:text-5xl">{n.valor}</p>
+                <p className="text-4xl font-light text-ceres-green-dark md:text-5xl">{n.valor}</p>
                 <p className="mt-2 text-sm font-medium uppercase tracking-wide text-ceres-muted">
                   {n.rotulo}
                 </p>
@@ -150,7 +150,7 @@ export default function QuemSomosPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ceres-gold">
               Para onde vamos
             </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+            <h2 className="mt-3 text-3xl font-light tracking-tight md:text-4xl">
               Levar a Ceres a cada cozinha brasileira que valoriza o que come.
             </h2>
           </div>
@@ -206,7 +206,7 @@ export default function QuemSomosPage() {
       <section className="pb-24">
         <div className="container-ceres">
           <div className="rounded-3xl bg-ceres-gold-soft p-10 text-center md:p-16">
-            <h2 className="text-3xl font-bold text-ceres-green-dark md:text-4xl">
+            <h2 className="text-3xl font-light text-ceres-green-dark md:text-4xl">
               Pronto pra experimentar?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-ceres-muted md:text-lg">

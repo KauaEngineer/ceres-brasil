@@ -86,7 +86,7 @@ export default function Home() {
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/80">
                     Categoria
                   </p>
-                  <h3 className="mt-2 text-2xl font-bold md:text-3xl">{c.rotuloPlural}</h3>
+                  <h3 className="mt-2 text-2xl font-light tracking-tight md:text-3xl">{c.rotuloPlural}</h3>
                   <p className="mt-3 inline-flex items-center gap-2 text-sm font-medium">
                     Explorar
                     <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">

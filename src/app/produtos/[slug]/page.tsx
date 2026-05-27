@@ -86,7 +86,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
             <p className="text-xs font-semibold uppercase tracking-wider text-ceres-gold">
               {categoriaRotulo(produto.categoria)}
             </p>
-            <h1 className="mt-2 text-3xl font-bold text-ceres-green-dark md:text-4xl">
+            <h1 className="mt-2 text-3xl font-light tracking-tight text-ceres-green-dark md:text-4xl">
               {produto.nome}
             </h1>
 
@@ -104,7 +104,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
             )}
 
             <div className="mt-8 rounded-2xl border border-ceres-green-soft bg-white p-6">
-              <p className="text-3xl font-bold text-ceres-green-dark md:text-4xl">
+              <p className="text-3xl font-light text-ceres-green-dark md:text-4xl">
                 {formatarPreco(produto.precoB2C)}
               </p>
               <p className="mt-1 text-xs text-ceres-muted">
