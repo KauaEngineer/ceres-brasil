@@ -52,7 +52,7 @@ export default function Home() {
       </section>
 
       {/* 2. PILARES — o que nos move */}
-      <section className="bg-ceres-paper py-20 md:py-28">
+      <section className="py-20 md:py-28">
         <div className="container-ceres">
           <SectionTitle
             eyebrow="O que nos move"
@@ -79,7 +79,11 @@ export default function Home() {
       {/* 3. SOBRE A CERES — teaser institucional */}
       <section id="sobre" className="scroll-mt-24 py-20 md:py-28">
         <div className="container-ceres grid items-center gap-12 md:grid-cols-2">
-          <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-ceres-sand-soft via-ceres-cream to-ceres-gold-soft md:order-2" />
+          <div className="flex aspect-[4/3] items-center justify-center rounded-3xl border border-ceres-terracotta-dark/40 md:order-2">
+            <span className="text-sm font-medium uppercase tracking-[0.3em] text-ceres-muted">
+              Imagem
+            </span>
+          </div>
           <div className="md:order-1">
             <SectionTitle
               eyebrow="Quem somos"
@@ -116,7 +120,7 @@ export default function Home() {
       </section>
 
       {/* 3. CATEGORIAS — cards visuais */}
-      <section className="bg-white py-20 md:py-28">
+      <section className="py-20 md:py-28">
         <div className="container-ceres">
           <SectionTitle
             eyebrow="O que produzimos"
@@ -180,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* 5. SELOS DE CONFIANÇA */}
-      <section className="bg-white py-12 md:py-16">
+      <section className="py-12 md:py-16">
         <div className="container-ceres">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {trustBadges.map((b) => (
