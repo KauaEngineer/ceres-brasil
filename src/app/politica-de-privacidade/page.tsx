@@ -26,7 +26,7 @@ export default function PoliticaPrivacidadePage() {
 
         <Section titulo="1. Dados que coletamos">
           <p>Coletamos dados pessoais nas seguintes situações:</p>
-          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-green-dark">
+          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-terracotta-dark">
             <li>
               <strong>Cadastro</strong>: nome completo, CPF/CNPJ, e-mail, telefone e endereço.
             </li>
@@ -45,7 +45,7 @@ export default function PoliticaPrivacidadePage() {
         </Section>
 
         <Section titulo="2. Como usamos seus dados">
-          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-green-dark">
+          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-terracotta-dark">
             <li>Processar pedidos, pagamentos e entregas.</li>
             <li>Emitir notas fiscais.</li>
             <li>Comunicar atualizações sobre seu pedido e atendimento de suporte.</li>
@@ -74,7 +74,7 @@ export default function PoliticaPrivacidadePage() {
 
         <Section titulo="5. Cookies">
           <p>O site usa três categorias de cookies:</p>
-          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-green-dark">
+          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-terracotta-dark">
             <li>
               <strong>Essenciais</strong>: necessários para login, carrinho e checkout funcionarem.
             </li>
@@ -94,7 +94,7 @@ export default function PoliticaPrivacidadePage() {
 
         <Section titulo="6. Seus direitos (LGPD)">
           <p>Você tem direito a, a qualquer momento:</p>
-          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-green-dark">
+          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-terracotta-dark">
             <li>Confirmar se tratamos seus dados.</li>
             <li>Acessar uma cópia dos dados que armazenamos.</li>
             <li>Corrigir dados incompletos, inexatos ou desatualizados.</li>
@@ -106,7 +106,7 @@ export default function PoliticaPrivacidadePage() {
             Para exercer qualquer desses direitos, envie um e-mail para{' '}
             <a
               href="mailto:contato@ceresbrasil.com.br"
-              className="font-medium text-ceres-green-dark underline"
+              className="font-medium text-ceres-terracotta-dark underline"
             >
               contato@ceresbrasil.com.br
             </a>
@@ -135,7 +135,7 @@ export default function PoliticaPrivacidadePage() {
             Encarregado pelo Tratamento de Dados (DPO):{' '}
             <a
               href="mailto:contato@ceresbrasil.com.br"
-              className="font-medium text-ceres-green-dark underline"
+              className="font-medium text-ceres-terracotta-dark underline"
             >
               contato@ceresbrasil.com.br
             </a>
@@ -154,7 +154,7 @@ export default function PoliticaPrivacidadePage() {
 function Section({ titulo, children }: { titulo: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-xl font-medium text-ceres-green-dark md:text-2xl">{titulo}</h2>
+      <h2 className="text-xl font-medium text-ceres-terracotta-dark md:text-2xl">{titulo}</h2>
       <div className="mt-3 text-ceres-muted">{children}</div>
     </section>
   );

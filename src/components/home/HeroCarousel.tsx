@@ -9,21 +9,21 @@ const slides = [
     title: 'Sabor sem glúten,\nnutrição em cada porção',
     description: 'Massas, farinhas e grãos cuidadosamente selecionados.',
     cta: { label: 'Ver produtos', href: '/produtos' },
-    gradient: 'from-ceres-green-dark via-ceres-green to-ceres-green-soft',
+    gradient: 'from-ceres-terracotta-dark via-ceres-terracotta to-ceres-sand-soft',
   },
   {
     eyebrow: 'Para revendedores',
     title: 'Preços de fábrica\npara revenda',
     description: 'Cadastre seu CNPJ e tenha acesso ao portal B2B exclusivo.',
     cta: { label: 'Seja revendedor', href: '/seja-revendedor' },
-    gradient: 'from-ceres-gold via-ceres-gold-soft to-ceres-green-soft',
+    gradient: 'from-ceres-gold via-ceres-gold-soft to-ceres-sand-soft',
   },
   {
     eyebrow: 'Entrega para todo Brasil',
     title: 'Receba em casa\nem poucos dias',
     description: 'Cálculo de frete na hora e despacho em até 48h úteis.',
     cta: { label: 'Conheça a Ceres', href: '/quem-somos' },
-    gradient: 'from-ceres-green via-ceres-green-soft to-ceres-cream',
+    gradient: 'from-ceres-terracotta via-ceres-sand-soft to-ceres-cream',
   },
 ];
 
@@ -71,7 +71,7 @@ export function HeroCarousel() {
               </p>
               <Link
                 href={s.cta.href}
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-ceres-green-dark transition-transform hover:scale-105"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-ceres-terracotta-dark transition-transform hover:scale-105"
               >
                 {s.cta.label}
                 <span aria-hidden="true">→</span>

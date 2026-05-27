@@ -10,10 +10,10 @@ export function ProductCard({ produto }: { produto: Produto }) {
   const esgotado = produto.estoque <= 0;
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-ceres-green-soft bg-white transition-shadow hover:shadow-lg">
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-ceres-sand-soft bg-white transition-shadow hover:shadow-lg">
       <Link href={`/produtos/${produto.slug}`} className="block">
-        <div className="relative aspect-square bg-gradient-to-br from-ceres-green-soft to-ceres-gold-soft">
-          <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-green-dark">
+        <div className="relative aspect-square bg-gradient-to-br from-ceres-sand-soft to-ceres-gold-soft">
+          <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
             Sem glúten
           </span>
           {esgotado && (
@@ -32,17 +32,17 @@ export function ProductCard({ produto }: { produto: Produto }) {
         </p>
         <Link
           href={`/produtos/${produto.slug}`}
-          className="mt-1 line-clamp-2 text-sm font-semibold text-ceres-dark transition-colors hover:text-ceres-green-dark md:text-base"
+          className="mt-1 line-clamp-2 text-sm font-semibold text-ceres-dark transition-colors hover:text-ceres-terracotta-dark md:text-base"
         >
           {produto.nome}
         </Link>
-        <p className="mt-auto pt-3 text-lg font-bold text-ceres-green-dark md:text-xl">
+        <p className="mt-auto pt-3 text-lg font-bold text-ceres-terracotta-dark md:text-xl">
           {formatarPreco(produto.precoB2C)}
         </p>
         <button
           type="button"
           disabled={esgotado}
-          className="mt-3 w-full rounded-full bg-ceres-green-dark px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-ceres-green disabled:cursor-not-allowed disabled:bg-ceres-muted disabled:opacity-60"
+          className="mt-3 w-full rounded-full bg-ceres-terracotta-dark px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-ceres-terracotta disabled:cursor-not-allowed disabled:bg-ceres-muted disabled:opacity-60"
         >
           {esgotado ? 'Indisponível' : 'Adicionar'}
         </button>

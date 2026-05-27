@@ -13,11 +13,32 @@ const trustBadges = [
   { icon: <ChatIcon />, title: 'Atendimento humano', text: 'WhatsApp 11 92477-1165' },
 ];
 
+const pilares = [
+  {
+    titulo: 'Natural de verdade',
+    texto:
+      'Sem corantes, sem conservantes desnecessários. A lista de ingredientes do verso da embalagem é curta de propósito.',
+    icon: <LeafIcon />,
+  },
+  {
+    titulo: 'Inclusivo no sabor',
+    texto:
+      'Quem evita glúten merece massa que cozinha al dente, farinha que rende e grão que dá refeição completa.',
+    icon: <HeartIcon />,
+  },
+  {
+    titulo: 'Confiável em cada lote',
+    texto:
+      'Tabela nutricional transparente, rastreabilidade da matéria-prima e qualidade conferida sempre.',
+    icon: <ShieldCheckIcon />,
+  },
+];
+
 // Imagens placeholder por categoria — gradientes ate ter fotos reais
 const gradientesCategoria: Record<string, string> = {
-  massas: 'from-ceres-green-dark via-ceres-green to-ceres-green-soft',
+  massas: 'from-ceres-terracotta-dark via-ceres-terracotta to-ceres-sand-soft',
   farinhas: 'from-ceres-gold via-ceres-gold-soft to-ceres-cream',
-  graos: 'from-ceres-green to-ceres-gold-soft',
+  graos: 'from-ceres-terracotta to-ceres-gold-soft',
 };
 
 export default function Home() {
@@ -30,33 +51,64 @@ export default function Home() {
         <HeroCarousel />
       </section>
 
-      {/* 2. SOBRE A CERES — teaser institucional */}
+      {/* 2. PILARES — o que nos move */}
+      <section className="bg-ceres-paper py-20 md:py-28">
+        <div className="container-ceres">
+          <SectionTitle
+            eyebrow="O que nos move"
+            title="Comida boa começa antes da prateleira."
+            description="Três princípios que guiam cada lote produzido — da escolha do ingrediente ao envio do pedido."
+          />
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {pilares.map((p) => (
+              <article
+                key={p.titulo}
+                className="rounded-2xl border border-ceres-sand-soft bg-white p-8 transition-shadow hover:shadow-md"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ceres-terracotta-dark text-white">
+                  {p.icon}
+                </div>
+                <h3 className="mt-5 text-xl font-medium text-ceres-terracotta-dark">{p.titulo}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ceres-muted">{p.texto}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. SOBRE A CERES — teaser institucional */}
       <section id="sobre" className="scroll-mt-24 py-20 md:py-28">
         <div className="container-ceres grid items-center gap-12 md:grid-cols-2">
-          <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-ceres-green-soft via-ceres-cream to-ceres-gold-soft md:order-2" />
+          <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-ceres-sand-soft via-ceres-cream to-ceres-gold-soft md:order-2" />
           <div className="md:order-1">
             <SectionTitle
               eyebrow="Quem somos"
-              title="Comida boa não precisa ter glúten."
+              title="Uma história que começa numa cozinha de São Paulo."
               align="left"
             />
             <div className="mt-6 space-y-4 text-base leading-relaxed text-ceres-muted md:text-lg">
               <p>
-                A Ceres Brasil nasceu em São Paulo da inquietação de quem queria comer bem sem
-                abrir mão de sabor e nutrição. Trabalhamos com farinhas de leguminosas — grão de
-                bico, lentilha, ervilha — pra entregar massas, farinhas e grãos que rendem
-                refeições completas.
+                A Ceres Brasil nasceu da inquietação de quem queria comer bem sem abrir mão de
+                sabor e nutrição. Trabalhamos com farinhas de leguminosas — grão de bico,
+                lentilha, ervilha — pra entregar massas, farinhas e grãos que rendem refeições
+                completas, ricas em proteína e fibra.
               </p>
               <p>
-                Cada lote é cuidado de perto. Sem aditivos artificiais, sem complicação. Só
-                ingrediente bom virando comida boa.
+                Cada lote é cuidado de perto. Sem aditivos artificiais, sem promessas vazias. A
+                gente acredita que comida boa não precisa de glúten — precisa de ingrediente
+                bom, processo limpo e gente que se importa.
+              </p>
+              <p>
+                Hoje atendemos consumidores em todo o Brasil e abrimos portas para revendedores
+                que compartilham essa visão. Toda nova caixa que sai da fábrica carrega esse
+                compromisso.
               </p>
             </div>
             <Link
               href="/quem-somos"
-              className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-ceres-green-dark px-6 py-3 text-sm font-semibold text-ceres-green-dark transition-colors hover:bg-ceres-green-dark hover:text-white"
+              className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-ceres-terracotta-dark px-6 py-3 text-sm font-semibold text-ceres-terracotta-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white"
             >
-              Conheça nossa história
+              Conheça nossa história completa
               <span aria-hidden="true">→</span>
             </Link>
           </div>
@@ -118,7 +170,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Link
               href="/produtos"
-              className="inline-flex items-center gap-2 rounded-full bg-ceres-green-dark px-8 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2 rounded-full bg-ceres-terracotta-dark px-8 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
             >
               Ver catálogo completo
               <span aria-hidden="true">→</span>
@@ -136,7 +188,7 @@ export default function Home() {
                 key={b.title}
                 className="flex flex-col items-center text-center md:flex-row md:items-start md:gap-4 md:text-left"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-ceres-green-soft text-ceres-green-dark">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-ceres-sand-soft text-ceres-terracotta-dark">
                   {b.icon}
                 </div>
                 <div className="mt-3 md:mt-0">
@@ -206,6 +258,42 @@ function ChatIcon() {
         strokeWidth="2"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+function LeafIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+      <path
+        d="M17 8C8 10 5 16 3 21l1.5.5C8 15 11 13 17 12c-3 4-3 6-7 9 5 0 9-2 11-5 3-3 3-9 3-12-3 0-9 1-12 4"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function HeartIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+      <path
+        d="M12 21s-7-4.5-9-9c-1-2 0-6 4-6 2 0 4 1 5 3 1-2 3-3 5-3 4 0 5 4 4 6-2 4.5-9 9-9 9z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function ShieldCheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+      <path
+        d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

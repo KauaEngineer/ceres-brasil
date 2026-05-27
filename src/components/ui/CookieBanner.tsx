@@ -33,9 +33,9 @@ export function CookieBanner() {
       aria-describedby="cookie-banner-desc"
       className="fixed inset-x-0 bottom-0 z-[60] p-4 md:bottom-6 md:left-1/2 md:right-auto md:max-w-2xl md:-translate-x-1/2"
     >
-      <div className="rounded-2xl border border-ceres-green-soft bg-white p-5 shadow-2xl md:p-6">
+      <div className="rounded-2xl border border-ceres-sand-soft bg-white p-5 shadow-2xl md:p-6">
         <div className="flex items-start gap-3">
-          <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ceres-green-soft text-ceres-green-dark md:flex">
+          <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ceres-sand-soft text-ceres-terracotta-dark md:flex">
             <CookieIcon />
           </div>
           <div className="flex-1">
@@ -47,7 +47,7 @@ export function CookieBanner() {
               só com seu consentimento.{' '}
               <Link
                 href="/politica-de-privacidade"
-                className="font-medium text-ceres-green-dark underline"
+                className="font-medium text-ceres-terracotta-dark underline"
               >
                 Ver política
               </Link>
@@ -57,14 +57,14 @@ export function CookieBanner() {
               <button
                 type="button"
                 onClick={() => decidir('all')}
-                className="rounded-full bg-ceres-green-dark px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-ceres-green"
+                className="rounded-full bg-ceres-terracotta-dark px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-ceres-terracotta"
               >
                 Aceitar todos
               </button>
               <button
                 type="button"
                 onClick={() => decidir('essential')}
-                className="rounded-full border border-ceres-green-soft px-5 py-2 text-sm font-medium text-ceres-dark transition-colors hover:border-ceres-green-dark"
+                className="rounded-full border border-ceres-sand-soft px-5 py-2 text-sm font-medium text-ceres-dark transition-colors hover:border-ceres-terracotta-dark"
               >
                 Apenas essenciais
               </button>

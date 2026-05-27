@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const navLinks = [
-  { href: '/', label: 'Início' },
-  { href: '/produtos', label: 'Produtos' },
-  { href: '/#sobre', label: 'Quem Somos' },
-  { href: '/contato', label: 'Contato' },
+  { href: '/', label: 'Início', destaque: false },
+  { href: '/produtos', label: 'Loja Online', destaque: true },
+  { href: '/#sobre', label: 'Quem Somos', destaque: false },
+  { href: '/contato', label: 'Contato', destaque: false },
 ];
 
 export function Header() {
@@ -52,22 +52,32 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-ceres-dark transition-colors hover:text-ceres-green-dark"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav className="hidden items-center gap-2 md:flex md:gap-3 lg:gap-6" aria-label="Navegação principal">
+          {navLinks.map((link) =>
+            link.destaque ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-full bg-ceres-terracotta-soft px-4 py-1.5 text-sm font-semibold text-ceres-terracotta-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-2 text-sm font-medium text-ceres-dark transition-colors hover:text-ceres-terracotta-dark"
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         <div className="flex items-center gap-2 md:gap-4">
           <button
             type="button"
-            className="relative rounded-full p-2 transition-colors hover:bg-ceres-green-soft"
+            className="relative rounded-full p-2 transition-colors hover:bg-ceres-sand-soft"
             aria-label={`Carrinho com ${cartCount} ${cartCount === 1 ? 'item' : 'itens'}`}
           >
             <CartIcon className="h-5 w-5 text-ceres-dark" />
@@ -87,7 +97,7 @@ export function Header() {
 
           <Link
             href="/login"
-            className="hidden rounded-full border border-ceres-green-dark px-5 py-2 text-sm font-medium text-ceres-green-dark transition-colors hover:bg-ceres-green-dark hover:text-white md:inline-flex"
+            className="hidden rounded-full border border-ceres-terracotta-dark px-5 py-2 text-sm font-medium text-ceres-terracotta-dark transition-colors hover:bg-ceres-terracotta-dark hover:text-white md:inline-flex"
           >
             Entrar
           </Link>
@@ -95,7 +105,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
-            className="rounded-full p-2 transition-colors hover:bg-ceres-green-soft md:hidden"
+            className="rounded-full p-2 transition-colors hover:bg-ceres-sand-soft md:hidden"
             aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={menuOpen}
           >
@@ -107,7 +117,7 @@ export function Header() {
       {/* Menu mobile */}
       {menuOpen && (
         <nav
-          className="border-t border-ceres-green-soft bg-white shadow-lg md:hidden"
+          className="border-t border-ceres-sand-soft bg-white shadow-lg md:hidden"
           aria-label="Navegação mobile"
         >
           <ul className="container-ceres flex flex-col py-2">
@@ -116,13 +126,13 @@ export function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="block py-3 text-base font-medium text-ceres-dark transition-colors hover:text-ceres-green-dark"
+                  className="block py-3 text-base font-medium text-ceres-dark transition-colors hover:text-ceres-terracotta-dark"
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
-            <li className="border-t border-ceres-green-soft pt-3 mt-1 space-y-2">
+            <li className="border-t border-ceres-sand-soft pt-3 mt-1 space-y-2">
               <Link
                 href="/seja-revendedor"
                 onClick={() => setMenuOpen(false)}
@@ -133,7 +143,7 @@ export function Header() {
               <Link
                 href="/login"
                 onClick={() => setMenuOpen(false)}
-                className="block rounded-full border border-ceres-green-dark py-3 text-center text-base font-medium text-ceres-green-dark"
+                className="block rounded-full border border-ceres-terracotta-dark py-3 text-center text-base font-medium text-ceres-terracotta-dark"
               >
                 Entrar
               </Link>

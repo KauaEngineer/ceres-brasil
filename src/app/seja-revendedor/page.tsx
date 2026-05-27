@@ -61,7 +61,7 @@ export default function SejaRevendedorPage() {
     <div className="bg-ceres-charcoal text-white">
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-ceres-charcoal via-ceres-green-dark to-ceres-charcoal" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ceres-charcoal via-ceres-terracotta-dark to-ceres-charcoal" />
         <div className="container-ceres relative py-24 md:py-32">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-ceres-gold">

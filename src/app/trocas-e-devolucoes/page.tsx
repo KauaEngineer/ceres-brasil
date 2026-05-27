@@ -28,7 +28,7 @@ export default function TrocasPage() {
             <strong>7 dias corridos</strong> contados a partir do recebimento para arrependimento,
             sem necessidade de justificativa.
           </p>
-          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-green-dark">
+          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-terracotta-dark">
             <li>O produto deve estar lacrado e sem indícios de uso.</li>
             <li>A embalagem original deve estar preservada.</li>
             <li>O frete de devolução é por conta da Ceres Brasil neste caso.</li>
@@ -44,12 +44,12 @@ export default function TrocasPage() {
         </Section>
 
         <Section titulo="3. Como solicitar troca ou devolução">
-          <ol className="list-decimal space-y-2 pl-6 marker:font-semibold marker:text-ceres-green-dark">
+          <ol className="list-decimal space-y-2 pl-6 marker:font-semibold marker:text-ceres-terracotta-dark">
             <li>
               Envie e-mail para{' '}
               <a
                 href="mailto:contato@ceresbrasil.com.br"
-                className="font-medium text-ceres-green-dark underline"
+                className="font-medium text-ceres-terracotta-dark underline"
               >
                 contato@ceresbrasil.com.br
               </a>{' '}
@@ -71,7 +71,7 @@ export default function TrocasPage() {
 
         <Section titulo="4. Prazo para reembolso">
           <p>O reembolso é feito pelo mesmo meio de pagamento usado na compra:</p>
-          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-green-dark">
+          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-terracotta-dark">
             <li>
               <strong>Cartão de crédito</strong>: o estorno aparece na próxima ou na fatura
               seguinte, conforme a operadora.
@@ -86,7 +86,7 @@ export default function TrocasPage() {
         </Section>
 
         <Section titulo="5. Casos não aceitos">
-          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-green-dark">
+          <ul className="list-disc space-y-2 pl-6 marker:text-ceres-terracotta-dark">
             <li>Produtos abertos, usados ou com lacre rompido (exceto defeito de fabricação).</li>
             <li>Solicitações fora do prazo de 7 dias para arrependimento.</li>
             <li>Produtos personalizados ou feitos sob encomenda.</li>
@@ -107,7 +107,7 @@ export default function TrocasPage() {
             <strong>@ceresbrasil</strong> ou e-mail{' '}
             <a
               href="mailto:contato@ceresbrasil.com.br"
-              className="font-medium text-ceres-green-dark underline"
+              className="font-medium text-ceres-terracotta-dark underline"
             >
               contato@ceresbrasil.com.br
             </a>
@@ -122,7 +122,7 @@ export default function TrocasPage() {
 function Section({ titulo, children }: { titulo: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-xl font-medium text-ceres-green-dark md:text-2xl">{titulo}</h2>
+      <h2 className="text-xl font-medium text-ceres-terracotta-dark md:text-2xl">{titulo}</h2>
       <div className="mt-3 text-ceres-muted">{children}</div>
     </section>
   );

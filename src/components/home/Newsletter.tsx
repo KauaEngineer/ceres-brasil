@@ -19,7 +19,7 @@ export function Newsletter() {
 
   return (
     <div className="container-ceres">
-      <div className="overflow-hidden rounded-3xl bg-ceres-green-dark p-8 md:p-16">
+      <div className="overflow-hidden rounded-3xl bg-ceres-terracotta-dark p-8 md:p-16">
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ceres-gold">

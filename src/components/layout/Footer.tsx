@@ -5,9 +5,9 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 border-t border-ceres-green-soft bg-white">
+    <footer className="mt-24 border-t border-ceres-sand-soft bg-white">
       {/* Faixa de selos de confianca */}
-      <div className="border-b border-ceres-green-soft bg-ceres-green-soft/50">
+      <div className="border-b border-ceres-sand-soft bg-ceres-sand-soft/50">
         <div className="container-ceres grid grid-cols-2 gap-6 py-6 md:grid-cols-3">
           <Seal icon={<TruckIcon />} title="Enviamos para todo o Brasil" />
           <Seal icon={<CardIcon />} title="Pague como quiser" />
@@ -33,19 +33,19 @@ export function Footer() {
 
         {/* Navegacao */}
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-ceres-green-dark">
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
             Navegação
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
-              <Link href="/" className="text-ceres-muted transition-colors hover:text-ceres-green-dark">
+              <Link href="/" className="text-ceres-muted transition-colors hover:text-ceres-terracotta-dark">
                 Início
               </Link>
             </li>
             <li>
               <Link
                 href="/produtos"
-                className="text-ceres-muted transition-colors hover:text-ceres-green-dark"
+                className="text-ceres-muted transition-colors hover:text-ceres-terracotta-dark"
               >
                 Produtos
               </Link>
@@ -53,7 +53,7 @@ export function Footer() {
             <li>
               <Link
                 href="/quem-somos"
-                className="text-ceres-muted transition-colors hover:text-ceres-green-dark"
+                className="text-ceres-muted transition-colors hover:text-ceres-terracotta-dark"
               >
                 Quem Somos
               </Link>
@@ -61,7 +61,7 @@ export function Footer() {
             <li>
               <Link
                 href="/contato"
-                className="text-ceres-muted transition-colors hover:text-ceres-green-dark"
+                className="text-ceres-muted transition-colors hover:text-ceres-terracotta-dark"
               >
                 Contato
               </Link>
@@ -69,7 +69,7 @@ export function Footer() {
             <li>
               <Link
                 href="/seja-revendedor"
-                className="text-ceres-muted transition-colors hover:text-ceres-green-dark"
+                className="text-ceres-muted transition-colors hover:text-ceres-terracotta-dark"
               >
                 Seja revendedor
               </Link>
@@ -79,7 +79,7 @@ export function Footer() {
 
         {/* Contato */}
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-ceres-green-dark">
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
             Contato
           </h3>
           <ul className="mt-4 space-y-3 text-sm text-ceres-muted">
@@ -88,7 +88,7 @@ export function Footer() {
                 href="https://wa.me/5511924771165"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 transition-colors hover:text-ceres-green-dark"
+                className="inline-flex items-center gap-2 transition-colors hover:text-ceres-terracotta-dark"
               >
                 <WhatsAppIcon className="h-4 w-4" /> (11) 92477-1165
               </a>
@@ -98,7 +98,7 @@ export function Footer() {
                 href="https://instagram.com/ceresbrasil"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 transition-colors hover:text-ceres-green-dark"
+                className="inline-flex items-center gap-2 transition-colors hover:text-ceres-terracotta-dark"
               >
                 <InstagramIcon className="h-4 w-4" /> @ceresbrasil
               </a>
@@ -112,19 +112,19 @@ export function Footer() {
       </div>
 
       {/* Rodape final */}
-      <div className="border-t border-ceres-green-soft">
+      <div className="border-t border-ceres-sand-soft">
         <div className="container-ceres flex flex-col items-center justify-between gap-3 py-5 text-xs text-ceres-muted md:flex-row">
           <p>© {year} Ceres Brasil · CNPJ 12.674.225/0001-02 · Todos os direitos reservados</p>
           <div className="flex gap-5">
             <Link
               href="/politica-de-privacidade"
-              className="transition-colors hover:text-ceres-green-dark"
+              className="transition-colors hover:text-ceres-terracotta-dark"
             >
               Política de Privacidade
             </Link>
             <Link
               href="/trocas-e-devolucoes"
-              className="transition-colors hover:text-ceres-green-dark"
+              className="transition-colors hover:text-ceres-terracotta-dark"
             >
               Trocas e Devoluções
             </Link>
@@ -138,7 +138,7 @@ export function Footer() {
 function Seal({ icon, title }: { icon: React.ReactNode; title: string }) {
   return (
     <div className="flex items-center gap-3">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-ceres-green-dark">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-ceres-terracotta-dark">
         {icon}
       </div>
       <span className="text-sm font-medium text-ceres-dark">{title}</span>

@@ -5,19 +5,23 @@
    Paleta inspirada no site atual ceresbrasil.lojavirtualnuvem.com.br
    ========================================================================= */
 @theme {
-  --color-ceres-green-dark: #1a5c38;
-  --color-ceres-green: #2d8a57;
-  --color-ceres-green-soft: #e6efe9;
-  --color-ceres-cream: #f3ecda;
-  --color-ceres-paper: #faf6ec;
-  --color-ceres-gold: #c8960c;
-  --color-ceres-gold-soft: #f0e3c2;
-  --color-ceres-dark: #2a2a2a;
-  --color-ceres-muted: #6b6760;
+  /* Paleta principal — terracota + bege (identidade artesanal) */
+  --color-ceres-terracotta-dark: #8e4530;
+  --color-ceres-terracotta: #c4654c;
+  --color-ceres-terracotta-soft: #f0d4c5;
+  --color-ceres-sand: #e8d4b6;
+  --color-ceres-sand-soft: #f5ead5;
+  --color-ceres-cream: #faf2e3;
+  --color-ceres-paper: #fdf8ed;
+  --color-ceres-gold: #d4a04a;
+  --color-ceres-gold-soft: #f0e0bf;
+  --color-ceres-dark: #3a2d22;
+  --color-ceres-muted: #8a7864;
+
   /* B2B / revenda — paleta distinta */
   --color-ceres-teal: #2bb3a5;
   --color-ceres-teal-dark: #1f8478;
-  --color-ceres-charcoal: #2c3530;
+  --color-ceres-charcoal: #2c2520;
 
   --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
 }
@@ -50,7 +54,7 @@ h3 {
 
 /* Focus ring acessivel padrao */
 *:focus-visible {
-  outline: 2px solid var(--color-ceres-green);
+  outline: 2px solid var(--color-ceres-terracotta);
   outline-offset: 2px;
   border-radius: 4px;
 }

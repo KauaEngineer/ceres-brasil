@@ -22,8 +22,8 @@ export function FiltroCategorias() {
             scroll={false}
             className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${
               ativo
-                ? 'bg-ceres-green-dark text-white'
-                : 'bg-white text-ceres-dark border border-ceres-green-soft hover:border-ceres-green-dark'
+                ? 'bg-ceres-terracotta-dark text-white'
+                : 'bg-white text-ceres-dark border border-ceres-sand-soft hover:border-ceres-terracotta-dark'
             }`}
             aria-current={ativo ? 'page' : undefined}
           >

@@ -50,11 +50,11 @@ export default async function ProdutoDetalhePage({ params }: Props) {
       {/* Breadcrumb */}
       <div className="container-ceres pt-8">
         <nav className="text-xs text-ceres-muted" aria-label="Navegação">
-          <Link href="/" className="hover:text-ceres-green-dark">
+          <Link href="/" className="hover:text-ceres-terracotta-dark">
             Início
           </Link>
           {' / '}
-          <Link href="/produtos" className="hover:text-ceres-green-dark">
+          <Link href="/produtos" className="hover:text-ceres-terracotta-dark">
             Produtos
           </Link>
           {' / '}
@@ -67,8 +67,8 @@ export default async function ProdutoDetalhePage({ params }: Props) {
         <div className="grid gap-10 md:grid-cols-2">
           {/* Galeria (placeholder com gradiente — substituir por fotos reais na Sprint 4) */}
           <div>
-            <div className="relative aspect-square overflow-hidden rounded-3xl bg-gradient-to-br from-ceres-green-soft via-ceres-cream to-ceres-gold-soft">
-              <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-green-dark">
+            <div className="relative aspect-square overflow-hidden rounded-3xl bg-gradient-to-br from-ceres-sand-soft via-ceres-cream to-ceres-gold-soft">
+              <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
                 Sem glúten
               </span>
               {esgotado && (
@@ -86,7 +86,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
             <p className="text-xs font-semibold uppercase tracking-wider text-ceres-gold">
               {categoriaRotulo(produto.categoria)}
             </p>
-            <h1 className="mt-2 text-3xl font-light tracking-tight text-ceres-green-dark md:text-4xl">
+            <h1 className="mt-2 text-3xl font-light tracking-tight text-ceres-terracotta-dark md:text-4xl">
               {produto.nome}
             </h1>
 
@@ -103,8 +103,8 @@ export default async function ProdutoDetalhePage({ params }: Props) {
               </p>
             )}
 
-            <div className="mt-8 rounded-2xl border border-ceres-green-soft bg-white p-6">
-              <p className="text-3xl font-light text-ceres-green-dark md:text-4xl">
+            <div className="mt-8 rounded-2xl border border-ceres-sand-soft bg-white p-6">
+              <p className="text-3xl font-light text-ceres-terracotta-dark md:text-4xl">
                 {formatarPreco(produto.precoB2C)}
               </p>
               <p className="mt-1 text-xs text-ceres-muted">
@@ -112,12 +112,12 @@ export default async function ProdutoDetalhePage({ params }: Props) {
               </p>
 
               <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <div className="flex items-center rounded-full border border-ceres-green-soft">
+                <div className="flex items-center rounded-full border border-ceres-sand-soft">
                   <button
                     type="button"
                     aria-label="Diminuir quantidade"
                     disabled
-                    className="px-4 py-2 text-ceres-muted hover:text-ceres-green-dark disabled:opacity-40"
+                    className="px-4 py-2 text-ceres-muted hover:text-ceres-terracotta-dark disabled:opacity-40"
                   >
                     −
                   </button>
@@ -126,7 +126,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
                     type="button"
                     aria-label="Aumentar quantidade"
                     disabled
-                    className="px-4 py-2 text-ceres-muted hover:text-ceres-green-dark disabled:opacity-40"
+                    className="px-4 py-2 text-ceres-muted hover:text-ceres-terracotta-dark disabled:opacity-40"
                   >
                     +
                   </button>
@@ -134,7 +134,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
                 <button
                   type="button"
                   disabled={esgotado}
-                  className="flex-1 rounded-full bg-ceres-green-dark px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ceres-green disabled:cursor-not-allowed disabled:bg-ceres-muted disabled:opacity-60"
+                  className="flex-1 rounded-full bg-ceres-terracotta-dark px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ceres-terracotta disabled:cursor-not-allowed disabled:bg-ceres-muted disabled:opacity-60"
                 >
                   {esgotado ? 'Indisponível' : 'Adicionar ao carrinho'}
                 </button>
@@ -147,7 +147,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
             {/* Ingredientes */}
             {produto.ingredientes.length > 0 && (
               <div className="mt-6">
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-ceres-green-dark">
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-ceres-terracotta-dark">
                   Ingredientes
                 </h2>
                 <p className="mt-2 text-sm text-ceres-muted">{produto.ingredientes.join(', ')}.</p>
@@ -166,15 +166,15 @@ export default async function ProdutoDetalhePage({ params }: Props) {
             description={`Porção de referência: ${t.porcao}.`}
             align="left"
           />
-          <div className="mt-8 overflow-hidden rounded-2xl border border-ceres-green-soft">
+          <div className="mt-8 overflow-hidden rounded-2xl border border-ceres-sand-soft">
             <table className="w-full text-left text-sm">
-              <thead className="bg-ceres-green-soft text-ceres-green-dark">
+              <thead className="bg-ceres-sand-soft text-ceres-terracotta-dark">
                 <tr>
                   <th className="px-5 py-3 font-semibold">Nutriente</th>
                   <th className="px-5 py-3 text-right font-semibold">Quantidade</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-ceres-green-soft">
+              <tbody className="divide-y divide-ceres-sand-soft">
                 <Linha label="Valor energético" valor={`${t.calorias} kcal`} />
                 <Linha label="Carboidratos" valor={`${t.carboidratos} g`} />
                 <Linha label="Proteínas" valor={`${t.proteinas} g`} />
@@ -213,7 +213,7 @@ export default async function ProdutoDetalhePage({ params }: Props) {
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="rounded-full bg-ceres-green-soft px-3 py-1 text-xs font-semibold text-ceres-green-dark">
+    <span className="rounded-full bg-ceres-sand-soft px-3 py-1 text-xs font-semibold text-ceres-terracotta-dark">
       {children}
     </span>
   );

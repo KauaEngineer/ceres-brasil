@@ -47,7 +47,7 @@ export default function QuemSomosPage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-ceres-green-dark via-ceres-green to-ceres-green-soft" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ceres-terracotta-dark via-ceres-terracotta to-ceres-sand-soft" />
         <div className="absolute inset-0 bg-black/20" />
         <div className="container-ceres relative py-24 md:py-32">
           <div className="max-w-3xl text-white">
@@ -90,7 +90,7 @@ export default function QuemSomosPage() {
               </p>
             </div>
           </div>
-          <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-ceres-gold-soft via-ceres-cream to-ceres-green-soft" />
+          <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-ceres-gold-soft via-ceres-cream to-ceres-sand-soft" />
         </div>
       </section>
 
@@ -106,12 +106,12 @@ export default function QuemSomosPage() {
             {valores.map((v) => (
               <article
                 key={v.titulo}
-                className="rounded-2xl border border-ceres-green-soft bg-ceres-cream p-8 transition-shadow hover:shadow-md"
+                className="rounded-2xl border border-ceres-sand-soft bg-ceres-cream p-8 transition-shadow hover:shadow-md"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ceres-green-dark text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ceres-terracotta-dark text-white">
                   {v.icone}
                 </div>
-                <h3 className="mt-5 text-xl font-medium text-ceres-green-dark">{v.titulo}</h3>
+                <h3 className="mt-5 text-xl font-medium text-ceres-terracotta-dark">{v.titulo}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ceres-muted">{v.texto}</p>
               </article>
             ))}
@@ -131,9 +131,9 @@ export default function QuemSomosPage() {
             {numeros.map((n) => (
               <div
                 key={n.rotulo}
-                className="rounded-2xl bg-white border border-ceres-green-soft p-6 text-center"
+                className="rounded-2xl bg-white border border-ceres-sand-soft p-6 text-center"
               >
-                <p className="text-4xl font-light text-ceres-green-dark md:text-5xl">{n.valor}</p>
+                <p className="text-4xl font-light text-ceres-terracotta-dark md:text-5xl">{n.valor}</p>
                 <p className="mt-2 text-sm font-medium uppercase tracking-wide text-ceres-muted">
                   {n.rotulo}
                 </p>
@@ -144,7 +144,7 @@ export default function QuemSomosPage() {
       </section>
 
       {/* METAS / VISÃO DE FUTURO */}
-      <section className="bg-ceres-green-dark py-20 text-white md:py-28">
+      <section className="bg-ceres-terracotta-dark py-20 text-white md:py-28">
         <div className="container-ceres grid items-start gap-12 md:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ceres-gold">
@@ -187,9 +187,9 @@ export default function QuemSomosPage() {
             {equipe.map((p) => (
               <article
                 key={p.nome}
-                className="overflow-hidden rounded-2xl border border-ceres-green-soft bg-white"
+                className="overflow-hidden rounded-2xl border border-ceres-sand-soft bg-white"
               >
-                <div className="aspect-square bg-gradient-to-br from-ceres-green-soft to-ceres-gold-soft" />
+                <div className="aspect-square bg-gradient-to-br from-ceres-sand-soft to-ceres-gold-soft" />
                 <div className="p-5 text-center">
                   <h3 className="text-base font-semibold text-ceres-dark">{p.nome}</h3>
                   <p className="mt-1 text-xs uppercase tracking-wider text-ceres-muted">
@@ -206,7 +206,7 @@ export default function QuemSomosPage() {
       <section className="pb-24">
         <div className="container-ceres">
           <div className="rounded-3xl bg-ceres-gold-soft p-10 text-center md:p-16">
-            <h2 className="text-3xl font-light text-ceres-green-dark md:text-4xl">
+            <h2 className="text-3xl font-light text-ceres-terracotta-dark md:text-4xl">
               Pronto pra experimentar?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-ceres-muted md:text-lg">
@@ -214,7 +214,7 @@ export default function QuemSomosPage() {
             </p>
             <Link
               href="/produtos"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-ceres-green-dark px-8 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-ceres-terracotta-dark px-8 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
             >
               Ver produtos
               <span aria-hidden="true">→</span>

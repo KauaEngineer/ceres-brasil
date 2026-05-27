@@ -34,7 +34,7 @@ export default function ContatoPage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-ceres-green-dark via-ceres-green to-ceres-green-soft" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ceres-terracotta-dark via-ceres-terracotta to-ceres-sand-soft" />
         <div className="absolute inset-0 bg-black/15" />
         <div className="container-ceres relative py-16 md:py-20">
           <div className="max-w-2xl text-white">
@@ -65,9 +65,9 @@ export default function ContatoPage() {
                     href={c.href}
                     target={c.href.startsWith('http') ? '_blank' : undefined}
                     rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="flex items-center gap-4 rounded-2xl border border-ceres-green-soft bg-white p-4 transition-shadow hover:shadow-md"
+                    className="flex items-center gap-4 rounded-2xl border border-ceres-sand-soft bg-white p-4 transition-shadow hover:shadow-md"
                   >
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ceres-green-soft text-ceres-green-dark">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ceres-sand-soft text-ceres-terracotta-dark">
                       {c.icon}
                     </div>
                     <div>
@@ -82,9 +82,9 @@ export default function ContatoPage() {
             </ul>
 
             {/* Endereço */}
-            <div className="mt-8 rounded-2xl border border-ceres-green-soft bg-ceres-green-soft/40 p-6">
+            <div className="mt-8 rounded-2xl border border-ceres-sand-soft bg-ceres-sand-soft/40 p-6">
               <div className="flex gap-3">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-ceres-green-dark">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-ceres-terracotta-dark">
                   <PinIcon />
                 </div>
                 <div>
@@ -120,7 +120,7 @@ export default function ContatoPage() {
       <section className="pb-20">
         <div className="container-ceres">
           <h2 className="sr-only">Como chegar</h2>
-          <div className="overflow-hidden rounded-3xl border border-ceres-green-soft">
+          <div className="overflow-hidden rounded-3xl border border-ceres-sand-soft">
             <iframe
               src="https://www.google.com/maps?q=Rua+Augusto+Farina+954,+Butant%C3%A3,+S%C3%A3o+Paulo&output=embed"
               width="100%"

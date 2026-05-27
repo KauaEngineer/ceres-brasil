@@ -28,8 +28,8 @@ export function ContatoForm() {
 
   if (status === 'sent') {
     return (
-      <div className="rounded-2xl border border-ceres-green-soft bg-ceres-green-soft/40 p-8 text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-ceres-green-dark text-white">
+      <div className="rounded-2xl border border-ceres-sand-soft bg-ceres-sand-soft/40 p-8 text-center">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-ceres-terracotta-dark text-white">
           <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" aria-hidden="true">
             <path
               d="M5 12l5 5 9-11"
@@ -40,14 +40,14 @@ export function ContatoForm() {
             />
           </svg>
         </div>
-        <h3 className="mt-4 text-xl font-bold text-ceres-green-dark">Mensagem enviada!</h3>
+        <h3 className="mt-4 text-xl font-bold text-ceres-terracotta-dark">Mensagem enviada!</h3>
         <p className="mt-2 text-sm text-ceres-muted">
           Recebemos sua mensagem. Vamos responder em até 1 dia útil.
         </p>
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-5 text-sm font-medium text-ceres-green-dark underline"
+          className="mt-5 text-sm font-medium text-ceres-terracotta-dark underline"
         >
           Enviar outra mensagem
         </button>
@@ -83,19 +83,19 @@ export function ContatoForm() {
           required
           value={form.mensagem}
           onChange={(e) => update('mensagem', e.target.value)}
-          className="mt-1.5 w-full rounded-2xl border border-ceres-green-soft bg-white px-4 py-3 text-sm text-ceres-dark placeholder:text-ceres-muted focus:border-ceres-green-dark focus:outline-none focus:ring-2 focus:ring-ceres-green-dark/30"
+          className="mt-1.5 w-full rounded-2xl border border-ceres-sand-soft bg-white px-4 py-3 text-sm text-ceres-dark placeholder:text-ceres-muted focus:border-ceres-terracotta-dark focus:outline-none focus:ring-2 focus:ring-ceres-terracotta-dark/30"
         />
       </div>
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full rounded-full bg-ceres-green-dark px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ceres-green disabled:opacity-60 md:w-auto md:min-w-[200px]"
+        className="w-full rounded-full bg-ceres-terracotta-dark px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ceres-terracotta disabled:opacity-60 md:w-auto md:min-w-[200px]"
       >
         {status === 'sending' ? 'Enviando...' : 'Enviar mensagem'}
       </button>
       <p className="text-xs text-ceres-muted">
         Ao enviar, você concorda com nossa{' '}
-        <a href="/politica-de-privacidade" className="underline hover:text-ceres-green-dark">
+        <a href="/politica-de-privacidade" className="underline hover:text-ceres-terracotta-dark">
           Política de Privacidade
         </a>
         .
@@ -126,7 +126,7 @@ function Field({ label, name, value, onChange, required, type = 'text' }: FieldP
         required={required}
         value={value}
         onChange={(e) => onChange(name, e.target.value)}
-        className="mt-1.5 w-full rounded-full border border-ceres-green-soft bg-white px-4 py-3 text-sm text-ceres-dark placeholder:text-ceres-muted focus:border-ceres-green-dark focus:outline-none focus:ring-2 focus:ring-ceres-green-dark/30"
+        className="mt-1.5 w-full rounded-full border border-ceres-sand-soft bg-white px-4 py-3 text-sm text-ceres-dark placeholder:text-ceres-muted focus:border-ceres-terracotta-dark focus:outline-none focus:ring-2 focus:ring-ceres-terracotta-dark/30"
       />
     </div>
   );
