@@ -15,6 +15,10 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+// ISR — recompila a página de cada produto a cada 10 min (rápido como
+// estático + atualiza sozinho quando trocarmos a fonte pelo Bling)
+export const revalidate = 600;
+
 // SSG — gera HTML estatico de todos os produtos no build
 export async function generateStaticParams() {
   return todosSlugs().map((slug) => ({ slug }));
