@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { B2BProductCard } from '@/components/produtos/B2BProductCard';
 import { listarProdutos } from '@/lib/mock/produtos';
+import { createClient } from '@/lib/supabase/server';
 import { CATEGORIAS } from '@/types/produto';
 
 export const metadata: Metadata = {
@@ -10,7 +11,30 @@ export const metadata: Metadata = {
     'Catálogo exclusivo para revendedores Ceres Brasil. Preços sob consulta, caixas fechadas, suporte dedicado.',
 };
 
-export default function LojaB2BPage() {
+/**
+ * Gate "soft": qualquer um vê o catálogo, mas só PJ com cadastro APROVADO vê
+ * preços e botão de comprar. A checagem é feita no servidor (RLS-safe) — o
+ * navegador nunca decide se está liberado.
+ */
+async function pjAprovada(): Promise<boolean> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return false;
+
+  const { data } = await supabase
+    .from('empresas')
+    .select('id')
+    .eq('profile_id', user.id)
+    .eq('status', 'aprovado')
+    .maybeSingle();
+
+  return !!data;
+}
+
+export default async function LojaB2BPage() {
+  const liberado = await pjAprovada();
   const produtos = listarProdutos();
   const porCategoria = CATEGORIAS.map((c) => ({
     info: c,
@@ -42,12 +66,30 @@ export default function LojaB2BPage() {
         </div>
       </section>
 
-      {/* Aviso temporário (sem auth ainda) */}
-      <section className="border-b border-white/10 bg-ceres-teal/10 py-3">
-        <div className="container-ceres text-center text-xs text-white/70">
-          ⚠️ Demo de portfólio. Em produção, esta área exige cadastro PJ aprovado (Sprint 3).
-        </div>
-      </section>
+      {/* Estado do acesso: liberado (PJ aprovada) x bloqueado (preços ocultos) */}
+      {liberado ? (
+        <section className="border-b border-white/10 bg-ceres-teal/15 py-3">
+          <div className="container-ceres text-center text-xs text-white/80">
+            ✅ Você está logado como revendedor aprovado — preços de revenda liberados.
+          </div>
+        </section>
+      ) : (
+        <section className="border-b border-white/10 bg-ceres-teal/10 py-3">
+          <div className="container-ceres flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-xs text-white/70">
+            <span>🔒 Preços de revenda visíveis apenas para PJ aprovada.</span>
+            <Link href="/seja-revendedor" className="font-semibold text-ceres-gold hover:underline">
+              Cadastre sua empresa
+            </Link>
+            <span className="text-white/30">·</span>
+            <Link
+              href="/login?redirect=/loja/b2b"
+              className="font-semibold text-ceres-gold hover:underline"
+            >
+              Já sou revendedor
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* Catálogo por categoria */}
       <section className="container-ceres py-12 md:py-16">
@@ -65,7 +107,7 @@ export default function LojaB2BPage() {
 
               <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
                 {itens.map((p) => (
-                  <B2BProductCard key={p.id} produto={p} />
+                  <B2BProductCard key={p.id} produto={p} liberado={liberado} />
                 ))}
               </div>
             </div>

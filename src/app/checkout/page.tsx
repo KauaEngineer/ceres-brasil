@@ -30,7 +30,8 @@ export default function CheckoutPage() {
   const router = useRouter();
   const { toast } = useToast();
   const supabase = createClient();
-  const { itens, limparCarrinho } = useCarrinho();
+  const { itens, modo, limparCarrinho } = useCarrinho();
+  const ehB2B = modo === 'b2b';
 
   const [montado, setMontado] = useState(false);
   const [etapa, setEtapa] = useState<1 | 2 | 3>(1);
@@ -125,6 +126,7 @@ export default function CheckoutPage() {
         endereco: end,
         frete: freteSel,
         pagamento,
+        modo,
       }),
     });
     setProcessando(false);
@@ -174,6 +176,15 @@ export default function CheckoutPage() {
 
   return (
     <div className="container-ceres py-10 md:py-14">
+      {ehB2B && (
+        <div className="mb-6 flex items-center gap-2 rounded-2xl border border-ceres-teal/40 bg-ceres-teal/10 px-4 py-3 text-sm text-ceres-dark">
+          <span className="rounded-full bg-ceres-teal px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+            Revenda
+          </span>
+          Pedido de revenda (B2B) — caixas fechadas com preço de atacado.
+        </div>
+      )}
+
       {/* Barra de progresso */}
       <div className="mb-8 flex items-center gap-2">
         {['Identificação', 'Entrega', 'Pagamento'].map((rotulo, i) => {

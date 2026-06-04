@@ -34,17 +34,31 @@ export async function POST(request: Request) {
   const freteValor = Number(body.frete.valor) || 0;
   const total = subtotal + freteValor;
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('tipo')
-    .eq('id', user.id)
-    .maybeSingle();
+  const ehB2B = body.modo === 'b2b';
+
+  // Pedido de revenda só é aceito se o usuário tiver empresa APROVADA.
+  // Checagem no servidor — não confiamos no que o cliente mandou no body.
+  if (ehB2B) {
+    const { data: empresa } = await supabase
+      .from('empresas')
+      .select('id')
+      .eq('profile_id', user.id)
+      .eq('status', 'aprovado')
+      .maybeSingle();
+
+    if (!empresa) {
+      return NextResponse.json(
+        { error: 'Pedido de revenda exige cadastro PJ aprovado.' },
+        { status: 403 },
+      );
+    }
+  }
 
   const { data: pedido, error } = await supabase
     .from('pedidos')
     .insert({
       profile_id: user.id,
-      tipo: profile?.tipo ?? 'pf',
+      tipo: ehB2B ? 'pj' : 'pf',
       status: 'pago', // simulado — viraria 'pendente' com gateway real
       total,
       endereco_entrega: body.endereco,

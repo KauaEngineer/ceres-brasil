@@ -5,9 +5,25 @@ import { persist } from 'zustand/middleware';
 import type { Produto } from '@/types/produto';
 
 /**
+ * Modo do carrinho:
+ * - 'b2c' = consumidor final (preço unitário precoB2C)
+ * - 'b2b' = revendedor PJ aprovado (caixa fechada de 12 un., preço precoB2B × 12)
+ *
+ * O carrinho inteiro tem UM modo só — não dá pra misturar caixa fechada de
+ * revenda com unidade de varejo no mesmo pedido. Trocar de modo limpa o carrinho.
+ */
+export type ModoCarrinho = 'b2c' | 'b2b';
+
+/** Quantas unidades vêm numa caixa fechada de revenda (B2B). */
+export const UNIDADES_POR_CAIXA = 12;
+
+/**
  * Item do carrinho — guardamos só o essencial (não o Produto inteiro) pra:
  * 1) manter o localStorage pequeno
  * 2) evitar dados de produto desatualizados presos no carrinho
+ *
+ * preco/estoque/nome já vêm "resolvidos" para o modo: no B2B, preco é o da
+ * caixa (precoB2B × 12), estoque é em caixas e o nome ganha o prefixo "CX 12".
  */
 export interface ItemCarrinho {
   produtoId: string;
@@ -19,8 +35,22 @@ export interface ItemCarrinho {
   quantidade: number;
 }
 
+/** Resolve preço/estoque/nome de um produto conforme o modo do carrinho. */
+function resolverItem(produto: Produto, modo: ModoCarrinho) {
+  if (modo === 'b2b') {
+    const precoUnit = produto.precoB2B ?? produto.precoB2C;
+    return {
+      preco: precoUnit * UNIDADES_POR_CAIXA,
+      estoque: Math.floor(produto.estoque / UNIDADES_POR_CAIXA), // em caixas
+      nome: `CX ${UNIDADES_POR_CAIXA} — ${produto.nome}`,
+    };
+  }
+  return { preco: produto.precoB2C, estoque: produto.estoque, nome: produto.nome };
+}
+
 interface CarrinhoState {
   itens: ItemCarrinho[];
+  modo: ModoCarrinho; // modo atual do carrinho (persistido)
   aberto: boolean; // estado do drawer (UI) — NÃO persistido
 
   // ações de UI
@@ -28,7 +58,7 @@ interface CarrinhoState {
   fechar: () => void;
 
   // ações do carrinho
-  adicionarItem: (produto: Produto, quantidade?: number) => void;
+  adicionarItem: (produto: Produto, quantidade?: number, modo?: ModoCarrinho) => void;
   removerItem: (produtoId: string) => void;
   atualizarQuantidade: (produtoId: string, quantidade: number) => void;
   limparCarrinho: () => void;
@@ -38,21 +68,28 @@ export const useCarrinho = create<CarrinhoState>()(
   persist(
     (set) => ({
       itens: [],
+      modo: 'b2c',
       aberto: false,
 
       abrir: () => set({ aberto: true }),
       fechar: () => set({ aberto: false }),
 
-      adicionarItem: (produto, quantidade = 1) =>
+      adicionarItem: (produto, quantidade = 1, modo = 'b2c') =>
         set((state) => {
-          const existente = state.itens.find((i) => i.produtoId === produto.id);
+          // Trocar de modo (ex.: estava comprando no varejo e entrou na revenda)
+          // zera o carrinho — não dá pra misturar B2C e B2B no mesmo pedido.
+          const itensBase = state.modo === modo ? state.itens : [];
+
+          const { preco, estoque, nome } = resolverItem(produto, modo);
+          const existente = itensBase.find((i) => i.produtoId === produto.id);
 
           if (existente) {
             // já está no carrinho: soma, mas nunca passa do estoque
-            const novaQtd = Math.min(existente.quantidade + quantidade, produto.estoque);
+            const novaQtd = Math.min(existente.quantidade + quantidade, estoque);
             return {
               aberto: true,
-              itens: state.itens.map((i) =>
+              modo,
+              itens: itensBase.map((i) =>
                 i.produtoId === produto.id ? { ...i, quantidade: novaQtd } : i,
               ),
             };
@@ -61,16 +98,17 @@ export const useCarrinho = create<CarrinhoState>()(
           // novo item
           return {
             aberto: true,
+            modo,
             itens: [
-              ...state.itens,
+              ...itensBase,
               {
                 produtoId: produto.id,
                 slug: produto.slug,
-                nome: produto.nome,
+                nome,
                 foto: produto.fotos[0] ?? '/produto-exemplo.png',
-                preco: produto.precoB2C,
-                estoque: produto.estoque,
-                quantidade: Math.min(quantidade, produto.estoque),
+                preco,
+                estoque,
+                quantidade: Math.min(quantidade, estoque),
               },
             ],
           };
@@ -94,8 +132,8 @@ export const useCarrinho = create<CarrinhoState>()(
     }),
     {
       name: 'ceres-carrinho',
-      // só persiste os itens — o estado do drawer (aberto) não deve sobreviver ao reload
-      partialize: (state) => ({ itens: state.itens }),
+      // persiste itens + modo — o estado do drawer (aberto) não deve sobreviver ao reload
+      partialize: (state) => ({ itens: state.itens, modo: state.modo }),
     },
   ),
 );
