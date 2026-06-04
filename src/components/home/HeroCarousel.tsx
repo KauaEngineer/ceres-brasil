@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 // Banners reais da Ceres (em public/). Adicione mais quando tiver novos.
-const slides = [{ src: '/banner-2.png', alt: 'Ceres Brasil — destaque', href: '/produtos' }];
+const slides = [{ src: '/banner-hero.webp', alt: 'Ceres Brasil — destaque', href: '/produtos' }];
 
 const INTERVAL_MS = 6000;
 
