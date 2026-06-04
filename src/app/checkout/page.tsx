@@ -47,9 +47,16 @@ export default function CheckoutPage() {
   const [pagamento, setPagamento] = useState<Pagamento>('pix');
   const [processando, setProcessando] = useState(false);
 
+  // Frete B2B — por conta do destinatário (não cobrado no checkout)
+  type FreteB2BTipo = 'transportadora_propria' | 'cotacao_ceres';
+  const [freteB2BTipo, setFreteB2BTipo] = useState<FreteB2BTipo>('transportadora_propria');
+  const [transportadora, setTransportadora] = useState('');
+  const [transpObs, setTranspObs] = useState('');
+
   const subtotal = calcularTotal(itens);
   const freteSel = freteOpcoes.find((f) => f.id === freteId);
-  const total = subtotal + (freteSel?.valor ?? 0);
+  // No B2B o frete é "a combinar" (R$ 0 no fechamento); no B2C soma o frete escolhido.
+  const total = subtotal + (ehB2B ? 0 : (freteSel?.valor ?? 0));
 
   useEffect(() => {
     setMontado(true);
@@ -107,13 +114,29 @@ export default function CheckoutPage() {
       toast('Informe um endereço com CEP válido.', 'erro');
       return;
     }
-    if (freteOpcoes.length === 0) calcularFrete(end.cep);
+    if (ehB2B) {
+      if (freteB2BTipo === 'transportadora_propria' && !transportadora.trim()) {
+        toast('Informe o nome da transportadora.', 'erro');
+        return;
+      }
+    } else if (freteOpcoes.length === 0) {
+      calcularFrete(end.cep);
+    }
     setEtapa(3);
+  }
+
+  /** Texto legível do frete B2B, guardado no pedido para o admin acionar. */
+  function montarFreteObs(): string {
+    if (freteB2BTipo === 'transportadora_propria') {
+      const base = `Transportadora do cliente: ${transportadora.trim()}`;
+      return transpObs.trim() ? `${base} — ${transpObs.trim()}` : base;
+    }
+    return 'Cotação Ceres — aguardando opção mais econômica para aprovação do cliente.';
   }
 
   async function finalizar() {
     const end = usarNovo ? novo : enderecos.find((e) => e.id === enderecoId);
-    if (!end || !freteSel) {
+    if (!end || (!ehB2B && !freteSel)) {
       toast('Endereço ou frete não selecionado.', 'erro');
       return;
     }
@@ -124,7 +147,9 @@ export default function CheckoutPage() {
       body: JSON.stringify({
         itens: itens.map((i) => ({ nome: i.nome, slug: i.slug, preco: i.preco, quantidade: i.quantidade })),
         endereco: end,
-        frete: freteSel,
+        // B2B: frete a combinar (valor 0) + observação de como será arranjado
+        frete: ehB2B ? { valor: 0, prazoDias: null } : freteSel,
+        freteObs: ehB2B ? montarFreteObs() : undefined,
         pagamento,
         modo,
       }),
@@ -281,35 +306,117 @@ export default function CheckoutPage() {
                 </div>
               )}
 
-              {/* Opções de frete */}
-              {freteOpcoes.length > 0 && (
+              {/* Frete B2B — por conta do destinatário */}
+              {ehB2B ? (
                 <div className="mt-6">
                   <h3 className="text-sm font-semibold text-ceres-dark">Frete</h3>
-                  <div className="mt-2 space-y-2">
-                    {freteOpcoes.map((f) => (
-                      <label
-                        key={f.id}
-                        className={`flex cursor-pointer items-center justify-between rounded-xl border p-3 ${
-                          freteId === f.id ? 'border-ceres-terracotta-dark bg-ceres-sand-soft/40' : 'border-ceres-sand-soft'
-                        }`}
-                      >
-                        <span className="flex items-center gap-3 text-sm text-ceres-dark">
-                          <input
-                            type="radio"
-                            name="frete"
-                            checked={freteId === f.id}
-                            onChange={() => setFreteId(f.id)}
-                            className="accent-ceres-terracotta-dark"
+                  <p className="mt-1 text-xs text-ceres-muted">
+                    Pedidos de revenda são enviados pela transportadora do cliente (frete por
+                    conta do destinatário).
+                  </p>
+
+                  <div className="mt-3 space-y-2">
+                    {/* Opção 1 — transportadora própria */}
+                    <label
+                      className={`block cursor-pointer rounded-xl border p-3 ${
+                        freteB2BTipo === 'transportadora_propria'
+                          ? 'border-ceres-terracotta-dark bg-ceres-sand-soft/40'
+                          : 'border-ceres-sand-soft'
+                      }`}
+                    >
+                      <span className="flex items-center gap-3 text-sm">
+                        <input
+                          type="radio"
+                          name="freteB2B"
+                          checked={freteB2BTipo === 'transportadora_propria'}
+                          onChange={() => setFreteB2BTipo('transportadora_propria')}
+                          className="accent-ceres-terracotta-dark"
+                        />
+                        <span>
+                          <span className="font-medium text-ceres-dark">Já tenho transportadora</span>
+                          <span className="block text-xs text-ceres-muted">
+                            Acionamos a transportadora e solicitamos a coleta.
+                          </span>
+                        </span>
+                      </span>
+
+                      {freteB2BTipo === 'transportadora_propria' && (
+                        <div className="mt-3 space-y-3 pl-7">
+                          <Input
+                            label="Nome da transportadora"
+                            value={transportadora}
+                            onChange={(e) => setTransportadora(e.target.value)}
+                            placeholder="Ex.: Braspress, Jamef…"
                           />
-                          {f.transportadora} · {f.prazoDias} dias úteis
+                          <Input
+                            label="Observações (opcional)"
+                            value={transpObs}
+                            onChange={(e) => setTranspObs(e.target.value)}
+                            placeholder="Nº de cadastro, condições combinadas…"
+                          />
+                        </div>
+                      )}
+                    </label>
+
+                    {/* Opção 2 — cotação pela Ceres */}
+                    <label
+                      className={`block cursor-pointer rounded-xl border p-3 ${
+                        freteB2BTipo === 'cotacao_ceres'
+                          ? 'border-ceres-terracotta-dark bg-ceres-sand-soft/40'
+                          : 'border-ceres-sand-soft'
+                      }`}
+                    >
+                      <span className="flex items-center gap-3 text-sm">
+                        <input
+                          type="radio"
+                          name="freteB2B"
+                          checked={freteB2BTipo === 'cotacao_ceres'}
+                          onChange={() => setFreteB2BTipo('cotacao_ceres')}
+                          className="accent-ceres-terracotta-dark"
+                        />
+                        <span>
+                          <span className="font-medium text-ceres-dark">
+                            Quero que a Ceres cote o frete
+                          </span>
+                          <span className="block text-xs text-ceres-muted">
+                            Cotamos com nossas parceiras e enviamos a opção mais econômica para
+                            sua aprovação antes de despachar.
+                          </span>
                         </span>
-                        <span className="text-sm font-semibold text-ceres-dark">
-                          {f.valor === 0 ? 'Grátis' : formatarPreco(f.valor)}
-                        </span>
-                      </label>
-                    ))}
+                      </span>
+                    </label>
                   </div>
                 </div>
+              ) : (
+                freteOpcoes.length > 0 && (
+                  <div className="mt-6">
+                    <h3 className="text-sm font-semibold text-ceres-dark">Frete</h3>
+                    <div className="mt-2 space-y-2">
+                      {freteOpcoes.map((f) => (
+                        <label
+                          key={f.id}
+                          className={`flex cursor-pointer items-center justify-between rounded-xl border p-3 ${
+                            freteId === f.id ? 'border-ceres-terracotta-dark bg-ceres-sand-soft/40' : 'border-ceres-sand-soft'
+                          }`}
+                        >
+                          <span className="flex items-center gap-3 text-sm text-ceres-dark">
+                            <input
+                              type="radio"
+                              name="frete"
+                              checked={freteId === f.id}
+                              onChange={() => setFreteId(f.id)}
+                              className="accent-ceres-terracotta-dark"
+                            />
+                            {f.transportadora} · {f.prazoDias} dias úteis
+                          </span>
+                          <span className="text-sm font-semibold text-ceres-dark">
+                            {f.valor === 0 ? 'Grátis' : formatarPreco(f.valor)}
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                )
               )}
 
               <div className="mt-6 flex gap-3">
@@ -390,7 +497,15 @@ export default function CheckoutPage() {
             </div>
             <div className="flex justify-between text-ceres-muted">
               <span>Frete</span>
-              <span>{freteSel ? (freteSel.valor === 0 ? 'Grátis' : formatarPreco(freteSel.valor)) : '—'}</span>
+              <span>
+                {ehB2B
+                  ? 'A combinar'
+                  : freteSel
+                    ? freteSel.valor === 0
+                      ? 'Grátis'
+                      : formatarPreco(freteSel.valor)
+                    : '—'}
+              </span>
             </div>
             <div className="flex justify-between pt-1 text-base font-semibold text-ceres-dark">
               <span>Total</span>

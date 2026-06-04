@@ -143,12 +143,17 @@ export default async function AdminPedidoDetalhe({
         <div className="mt-4 space-y-1 border-t border-ceres-sand-soft pt-4 text-sm">
           <div className="flex justify-between text-ceres-muted">
             <span>Frete</span>
-            <span>{formatarPreco(Number(pedido.frete_valor ?? 0))}</span>
+            <span>{pedido.frete_obs ? 'A combinar' : formatarPreco(Number(pedido.frete_valor ?? 0))}</span>
           </div>
           <div className="flex justify-between text-base font-semibold text-ceres-dark">
             <span>Total</span>
             <span>{formatarPreco(Number(pedido.total))}</span>
           </div>
+          {pedido.frete_obs && (
+            <p className="mt-2 rounded-lg border border-ceres-teal/30 bg-ceres-teal/5 p-2 text-xs text-ceres-dark">
+              🚚 <strong>Frete:</strong> {pedido.frete_obs}
+            </p>
+          )}
           {pedido.pagamento_id && (
             <p className="mt-2 text-xs text-ceres-muted">Pagamento: {pedido.pagamento_id}</p>
           )}

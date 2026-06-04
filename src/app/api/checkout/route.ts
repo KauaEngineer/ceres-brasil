@@ -64,6 +64,8 @@ export async function POST(request: Request) {
       endereco_entrega: body.endereco,
       frete_valor: freteValor,
       frete_prazo: body.frete.prazoDias ?? null,
+      // B2B: como o frete será arranjado (transportadora do cliente x cotação Ceres)
+      frete_obs: ehB2B && typeof body.freteObs === 'string' ? body.freteObs : null,
       pagamento_id: `SIMULADO-${body.pagamento ?? 'pix'}-${Date.now()}`,
     })
     .select('id')

@@ -115,12 +115,17 @@ export default async function PedidoDetalhePage({
         <div className="mt-4 space-y-1 border-t border-ceres-sand-soft pt-4 text-sm">
           <div className="flex justify-between text-ceres-muted">
             <span>Frete</span>
-            <span>{formatarPreco(Number(pedido.frete_valor ?? 0))}</span>
+            <span>{pedido.frete_obs ? 'A combinar' : formatarPreco(Number(pedido.frete_valor ?? 0))}</span>
           </div>
           <div className="flex justify-between text-base font-semibold text-ceres-dark">
             <span>Total</span>
             <span>{formatarPreco(Number(pedido.total))}</span>
           </div>
+          {pedido.frete_obs && (
+            <p className="mt-2 rounded-lg bg-ceres-sand-soft/50 p-2 text-xs text-ceres-muted">
+              🚚 {pedido.frete_obs}
+            </p>
+          )}
         </div>
       </div>
 
