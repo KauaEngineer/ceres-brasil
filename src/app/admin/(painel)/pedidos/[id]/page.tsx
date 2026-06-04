@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { AcoesPedido } from '@/components/admin/AcoesPedido';
+import { ehAdminDemo } from '@/lib/admin/auth';
 import { createClient } from '@/lib/supabase/server';
 import {
   formatarData,
@@ -39,6 +40,7 @@ export default async function AdminPedidoDetalhe({
 
   if (!pedido) notFound();
 
+  const demo = await ehAdminDemo();
   const status = pedido.status as StatusPedido;
   const info = STATUS_INFO[status];
   const statusIndex = TIMELINE.indexOf(status);
@@ -72,7 +74,7 @@ export default async function AdminPedidoDetalhe({
       <p className="text-sm text-ceres-muted">Feito em {formatarData(pedido.criado_em)}</p>
 
       {/* Ações (client) */}
-      <AcoesPedido pedidoId={pedido.id} status={status} blingId={pedido.bling_pedido_id} />
+      <AcoesPedido pedidoId={pedido.id} status={status} blingId={pedido.bling_pedido_id} demo={demo} />
 
       {/* Timeline */}
       {!cancelado && (

@@ -12,9 +12,10 @@ interface Props {
   pedidoId: string;
   status: StatusPedido;
   blingId?: string | null;
+  demo?: boolean;
 }
 
-export function AcoesPedido({ pedidoId, status, blingId }: Props) {
+export function AcoesPedido({ pedidoId, status, blingId, demo = false }: Props) {
   const router = useRouter();
   const { toast } = useToast();
   const [carregando, setCarregando] = useState(false);
@@ -22,6 +23,10 @@ export function AcoesPedido({ pedidoId, status, blingId }: Props) {
   const [rastreio, setRastreio] = useState(blingId ?? '');
 
   async function patch(novoStatus: StatusPedido, extras?: Record<string, unknown>) {
+    if (demo) {
+      toast('Ação indisponível na versão demo.', 'erro');
+      return;
+    }
     setCarregando(true);
     const res = await fetch(`/api/admin/pedidos/${pedidoId}/status`, {
       method: 'PATCH',
@@ -51,6 +56,11 @@ export function AcoesPedido({ pedidoId, status, blingId }: Props) {
 
   return (
     <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-ceres-terracotta-dark/15 bg-white p-4">
+      {demo && (
+        <p className="w-full text-xs text-ceres-muted">
+          🔒 Modo demonstração — as ações abaixo estão desativadas.
+        </p>
+      )}
       {status === 'pendente' && (
         <Button loading={carregando} onClick={() => patch('pago')}>
           Marcar como pago

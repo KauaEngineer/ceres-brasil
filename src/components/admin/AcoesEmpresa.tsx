@@ -10,9 +10,11 @@ import { useToast } from '@/hooks/useToast';
 export function AcoesEmpresa({
   empresaId,
   status,
+  demo = false,
 }: {
   empresaId: string;
   status: 'pendente' | 'aprovado' | 'rejeitado';
+  demo?: boolean;
 }) {
   const router = useRouter();
   const { toast } = useToast();
@@ -21,6 +23,10 @@ export function AcoesEmpresa({
   const [motivo, setMotivo] = useState('');
 
   async function decidir(decisao: 'aprovar' | 'rejeitar', motivoTexto?: string) {
+    if (demo) {
+      toast('Ação indisponível na versão demo.', 'erro');
+      return;
+    }
     setCarregando(true);
     const res = await fetch(`/api/admin/empresas/${empresaId}/decisao`, {
       method: 'PATCH',
@@ -55,7 +61,12 @@ export function AcoesEmpresa({
   }
 
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap items-center gap-3">
+      {demo && (
+        <p className="w-full text-xs text-ceres-muted">
+          🔒 Modo demonstração — aprovar/rejeitar está desativado.
+        </p>
+      )}
       <Button loading={carregando} onClick={() => decidir('aprovar')}>
         Aprovar
       </Button>

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { requireAdmin } from '@/lib/admin/auth';
+import { ehContaDemo, requireAdmin } from '@/lib/admin/auth';
 import { createClient } from '@/lib/supabase/server';
 
 const STATUS_VALIDOS = ['pendente', 'pago', 'em_separacao', 'enviado', 'entregue', 'cancelado'] as const;
@@ -12,6 +12,9 @@ export async function PATCH(
   const guard = await requireAdmin();
   if (!guard.ok) {
     return NextResponse.json({ error: guard.mensagem }, { status: guard.status });
+  }
+  if (ehContaDemo(guard.email)) {
+    return NextResponse.json({ error: 'Ação indisponível na versão demo.' }, { status: 403 });
   }
 
   const { id } = await params;

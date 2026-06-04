@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { AcoesEmpresa } from '@/components/admin/AcoesEmpresa';
+import { ehAdminDemo } from '@/lib/admin/auth';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 import { formatarData, formatarPreco, STATUS_INFO, type StatusPedido } from '@/lib/utils/pedido';
@@ -45,6 +46,7 @@ export default async function EmpresaDetalhePage({
 
   if (!empresa) notFound();
 
+  const demo = await ehAdminDemo();
   const profile = Array.isArray(empresa.profiles) ? empresa.profiles[0] : empresa.profiles;
   const status = empresa.status as 'pendente' | 'aprovado' | 'rejeitado';
   const endereco = (empresa.endereco ?? {}) as Endereco;
@@ -85,7 +87,7 @@ export default async function EmpresaDetalhePage({
 
       {/* Ações */}
       <div className="rounded-2xl border border-ceres-terracotta-dark/15 bg-white p-4">
-        <AcoesEmpresa empresaId={empresa.id} status={status} />
+        <AcoesEmpresa empresaId={empresa.id} status={status} demo={demo} />
         {status === 'rejeitado' && empresa.motivo_rejeicao && (
           <p className="mt-3 text-sm text-red-700">
             <strong>Motivo da rejeição:</strong> {empresa.motivo_rejeicao}
