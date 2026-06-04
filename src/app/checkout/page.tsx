@@ -55,8 +55,22 @@ export default function CheckoutPage() {
 
   const subtotal = calcularTotal(itens);
   const freteSel = freteOpcoes.find((f) => f.id === freteId);
+  // B2B: Pix dá 5% de desconto no subtotal.
+  const descontoPix = ehB2B && pagamento === 'pix' ? subtotal * 0.05 : 0;
   // No B2B o frete é "a combinar" (R$ 0 no fechamento); no B2C soma o frete escolhido.
-  const total = subtotal + (ehB2B ? 0 : (freteSel?.valor ?? 0));
+  const total = subtotal - descontoPix + (ehB2B ? 0 : (freteSel?.valor ?? 0));
+
+  // Formas de pagamento dependem do modo (B2B tem prazo no boleto e desconto no Pix).
+  const opcoesPagamento = ehB2B
+    ? ([
+        { id: 'pix', label: 'Pix', desc: '5% de desconto' },
+        { id: 'boleto', label: 'Boleto', desc: '28 dias corridos' },
+      ] as const)
+    : ([
+        { id: 'pix', label: 'Pix', desc: 'Aprovação na hora' },
+        { id: 'cartao', label: 'Cartão de crédito', desc: 'Em até 12x' },
+        { id: 'boleto', label: 'Boleto', desc: 'Vence em 3 dias' },
+      ] as const);
 
   useEffect(() => {
     setMontado(true);
@@ -437,13 +451,7 @@ export default function CheckoutPage() {
               </p>
 
               <div className="mt-4 space-y-2">
-                {(
-                  [
-                    { id: 'pix', label: 'Pix', desc: 'Aprovação na hora' },
-                    { id: 'cartao', label: 'Cartão de crédito', desc: 'Em até 12x' },
-                    { id: 'boleto', label: 'Boleto', desc: 'Vence em 3 dias' },
-                  ] as const
-                ).map((m) => (
+                {opcoesPagamento.map((m) => (
                   <label
                     key={m.id}
                     className={`flex cursor-pointer items-center gap-3 rounded-xl border p-3 ${
@@ -495,6 +503,12 @@ export default function CheckoutPage() {
               <span>Subtotal</span>
               <span>{formatarPreco(subtotal)}</span>
             </div>
+            {descontoPix > 0 && (
+              <div className="flex justify-between text-ceres-teal-dark">
+                <span>Desconto Pix (5%)</span>
+                <span>− {formatarPreco(descontoPix)}</span>
+              </div>
+            )}
             <div className="flex justify-between text-ceres-muted">
               <span>Frete</span>
               <span>

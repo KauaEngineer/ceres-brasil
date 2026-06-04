@@ -29,12 +29,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Dados do pedido incompletos.' }, { status: 400 });
   }
 
+  const ehB2B = body.modo === 'b2b';
+
   const itens = body.itens as ItemCheckout[];
   const subtotal = itens.reduce((s, i) => s + i.preco * i.quantidade, 0);
   const freteValor = Number(body.frete.valor) || 0;
-  const total = subtotal + freteValor;
-
-  const ehB2B = body.modo === 'b2b';
+  // B2B: Pix dá 5% de desconto. Calculado no servidor (autoritativo) — não
+  // confiamos no total que o cliente mandar.
+  const descontoPix = ehB2B && body.pagamento === 'pix' ? subtotal * 0.05 : 0;
+  const total = Math.round((subtotal - descontoPix + freteValor) * 100) / 100;
 
   // Pedido de revenda só é aceito se o usuário tiver empresa APROVADA.
   // Checagem no servidor — não confiamos no que o cliente mandou no body.
