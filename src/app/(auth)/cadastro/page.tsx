@@ -79,7 +79,7 @@ export default function CadastroPage() {
 
     // Se o Supabase exigir confirmação de e-mail, não há sessão imediata.
     if (data.session) {
-      toast('Conta criada! Bem-vindo à Ceres.', 'sucesso');
+      toast('Conta criada! Bem-vindo à Sua Marca.', 'sucesso');
       router.push('/conta');
       router.refresh();
     } else {

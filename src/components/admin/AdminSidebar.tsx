@@ -29,7 +29,7 @@ export function AdminSidebar({ nome }: { nome: string }) {
     <>
       {/* Topbar mobile */}
       <div className="flex items-center justify-between border-b border-white/10 bg-ceres-charcoal px-4 py-3 text-white md:hidden">
-        <span className="font-medium">Ceres Admin</span>
+        <span className="font-medium">Sua Marca · Admin</span>
         <button type="button" onClick={() => setAberto((v) => !v)} aria-label="Menu">
           <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
             <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -41,7 +41,7 @@ export function AdminSidebar({ nome }: { nome: string }) {
         className={`${aberto ? 'block' : 'hidden'} border-b border-white/10 bg-ceres-charcoal text-white md:block md:min-h-screen md:w-60 md:border-b-0 md:border-r`}
       >
         <div className="hidden px-6 py-5 md:block">
-          <p className="text-lg font-medium">Ceres Admin</p>
+          <p className="text-lg font-medium">Sua Marca · Admin</p>
           <p className="mt-0.5 truncate text-xs text-white/50">{nome}</p>
         </div>
 

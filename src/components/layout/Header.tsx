@@ -1,9 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { BRAND } from '@/lib/brand';
 import { calcularQuantidadeTotal, useCarrinho } from '@/hooks/useCarrinho';
 
 const navLinks = [
@@ -54,15 +54,21 @@ export function Header() {
       }`}
     >
       <div className="flex h-16 items-center justify-between px-4 md:h-20 md:px-8 lg:px-12">
-        <Link href="/" className="flex items-center" aria-label="Ceres Brasil — página inicial">
-          <Image
-            src="/logo-ceres.png"
-            alt="Ceres Brasil — Produtos Artesanais"
-            width={120}
-            height={120}
-            priority
-            className="h-12 w-auto md:h-14"
-          />
+        <Link
+          href="/"
+          className="flex items-center gap-2"
+          aria-label={`${BRAND.nome} — página inicial`}
+        >
+          {/* Placeholder de logo — moldura tracejada + nome da marca */}
+          <span
+            aria-hidden="true"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-dashed border-ceres-terracotta-dark/50 text-[9px] font-medium uppercase text-ceres-terracotta-dark/70"
+          >
+            logo
+          </span>
+          <span className="text-lg font-light tracking-tight text-ceres-dark md:text-xl">
+            {BRAND.nome}
+          </span>
         </Link>
 
         <nav

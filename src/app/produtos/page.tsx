@@ -9,7 +9,7 @@ import { CATEGORIAS, type CategoriaProduto } from '@/types/produto';
 export const metadata: Metadata = {
   title: 'Produtos',
   description:
-    'Catálogo completo da Ceres Brasil — massas, farinhas e grãos sem glúten. Frete para todo o Brasil.',
+    'Catálogo completo da Sua Marca — massas, farinhas e grãos sem glúten. Frete para todo o Brasil.',
 };
 
 function ehCategoriaValida(s: string | undefined): s is CategoriaProduto {

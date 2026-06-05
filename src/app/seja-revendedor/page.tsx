@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Seja Revendedor',
   description:
-    'Torne-se um revendedor Ceres Brasil. Preços de fábrica, suporte comercial dedicado e entrega para todo o país. Cadastre seu CNPJ.',
+    'Torne-se um revendedor Sua Marca. Preços de fábrica, suporte comercial dedicado e entrega para todo o país. Cadastre seu CNPJ.',
 };
 
 const beneficios = [
@@ -70,7 +70,7 @@ export default function SejaRevendedorPage() {
             <h1 className="mt-5 text-4xl font-light leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
               Seja um revendedor
               <br />
-              <span className="text-ceres-gold">Ceres Brasil.</span>
+              <span className="text-ceres-gold">Sua Marca.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">
               Preço de fábrica, suporte humano e logística prioritária para quem leva nossos
@@ -195,7 +195,7 @@ export default function SejaRevendedorPage() {
       <section className="py-20 md:py-28">
         <div className="container-ceres text-center">
           <h2 className="mx-auto max-w-3xl text-3xl font-light leading-tight md:text-5xl">
-            Pronto pra levar a Ceres pra mais gente?
+            Pronto pra levar a marca pra mais gente?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-white/70 md:text-lg">
             Cadastro em 5 minutos. Resposta em até 2 dias úteis.

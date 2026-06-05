@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { whatsappLink } from '@/lib/brand';
 
 export const metadata: Metadata = {
   title: 'Aguardando aprovação',
@@ -37,7 +38,7 @@ export default function AguardandoAprovacaoPage() {
 
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <a
-            href="https://wa.me/5511924771165?text=Ol%C3%A1!%20Acabei%20de%20me%20cadastrar%20como%20revendedor."
+            href={whatsappLink('Olá! Acabei de me cadastrar como revendedor.')}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-ceres-terracotta-dark px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ceres-terracotta"

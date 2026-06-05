@@ -4,8 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-// Banners reais da Ceres (em public/). Adicione mais quando tiver novos.
-const slides = [{ src: '/banner-hero.webp', alt: 'Ceres Brasil — destaque', href: '/produtos' }];
+// Banner placeholder (trocar por banner real em public/).
+const slides = [{ src: '/banner-hero.webp', alt: 'Sua Marca — destaque', href: '/produtos' }];
 
 const INTERVAL_MS = 6000;
 

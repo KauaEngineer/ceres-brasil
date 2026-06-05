@@ -3,6 +3,7 @@ import { HeroCarousel } from '@/components/home/HeroCarousel';
 import { Newsletter } from '@/components/home/Newsletter';
 import { ProductCard } from '@/components/produtos/ProductCard';
 import { SectionTitle } from '@/components/ui/SectionTitle';
+import { BRAND } from '@/lib/brand';
 import { listarDestaques } from '@/lib/mock/produtos';
 import { CATEGORIAS } from '@/types/produto';
 
@@ -10,7 +11,7 @@ const trustBadges = [
   { icon: <FreteIcon />, title: 'Frete para todo Brasil', text: 'Despachamos em até 48h' },
   { icon: <CardIcon />, title: 'Pague como quiser', text: 'Cartão, Pix ou boleto' },
   { icon: <ShieldIcon />, title: 'Compra segura', text: 'Site protegido com SSL' },
-  { icon: <ChatIcon />, title: 'Atendimento humano', text: 'WhatsApp 11 92477-1165' },
+  { icon: <ChatIcon />, title: 'Atendimento humano', text: `WhatsApp ${BRAND.whatsappDisplay}` },
 ];
 
 const pilares = [
@@ -76,7 +77,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. SOBRE A CERES — teaser institucional */}
+      {/* 3. SOBRE A MARCA — teaser institucional */}
       <section id="sobre" className="scroll-mt-24 py-20 md:py-28">
         <div className="container-ceres grid items-center gap-12 md:grid-cols-2">
           <div className="flex aspect-[4/3] items-center justify-center rounded-3xl border border-ceres-terracotta-dark/40 md:order-2">
@@ -87,12 +88,12 @@ export default function Home() {
           <div className="md:order-1">
             <SectionTitle
               eyebrow="Quem somos"
-              title="Uma história que começa numa cozinha de São Paulo."
+              title="Uma história que começa numa cozinha de verdade."
               align="left"
             />
             <div className="mt-6 space-y-4 text-base leading-relaxed text-ceres-muted md:text-lg">
               <p>
-                A Ceres Brasil nasceu de um jeito simples: sem grandes planos, sem estrutura e sem
+                A Sua Marca nasceu de um jeito simples: sem grandes planos, sem estrutura e sem
                 imaginar onde aquilo poderia chegar. Tudo começou com uma ideia, vontade de
                 empreender e MUITO esforço.
               </p>

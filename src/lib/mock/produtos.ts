@@ -1,8 +1,8 @@
 /**
- * Dados mock dos produtos da Ceres Brasil.
+ * Dados mock dos produtos da Sua Marca.
  * Substituido pela integracao com o Bling na Sprint 4.
  *
- * Fonte: nomes extraidos do site atual ceresbrasil.lojavirtualnuvem.com.br.
+ * Dados ilustrativos de produtos (template).
  * Precos sao aproximacao realista (a confirmar com o cliente).
  */
 

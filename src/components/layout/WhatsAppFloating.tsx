@@ -2,16 +2,15 @@
  * Botao flutuante de WhatsApp — fixo no canto inferior direito de todas as paginas.
  * Renderizado no layout global. Apenas link, nao precisa de JS — server component.
  */
-export function WhatsAppFloating() {
-  const numero = '5511924771165';
-  const mensagem = encodeURIComponent('Olá! Vim pelo site da Ceres Brasil.');
+import { BRAND, whatsappLink } from '@/lib/brand';
 
+export function WhatsAppFloating() {
   return (
     <a
-      href={`https://wa.me/${numero}?text=${mensagem}`}
+      href={whatsappLink(`Olá! Vim pelo site da ${BRAND.nome}.`)}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Falar com a Ceres Brasil no WhatsApp"
+      aria-label="Falar com a Sua Marca no WhatsApp"
       className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-transform hover:scale-110 md:bottom-6 md:right-6 md:h-16 md:w-16"
     >
       <svg viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7 md:h-8 md:w-8" aria-hidden="true">

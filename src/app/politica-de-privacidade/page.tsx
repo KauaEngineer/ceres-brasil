@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { SectionTitle } from '@/components/ui/SectionTitle';
+import { BRAND } from '@/lib/brand';
 
 export const metadata: Metadata = {
   title: 'Política de Privacidade',
   description:
-    'Política de privacidade da Ceres Brasil — como coletamos, usamos e protegemos seus dados pessoais em conformidade com a LGPD.',
+    'Política de privacidade da Sua Marca — como coletamos, usamos e protegemos seus dados pessoais em conformidade com a LGPD.',
 };
 
 const ATUALIZADO_EM = '27 de maio de 2026';
@@ -17,11 +18,10 @@ export default function PoliticaPrivacidadePage() {
 
       <div className="prose-ceres mt-10 max-w-3xl space-y-6 text-base leading-relaxed text-ceres-dark">
         <p>
-          A Ceres Brasil (CNPJ 12.674.225/0001-02), com sede na Rua Augusto Farina, 954, Butantã,
-          São Paulo — SP, valoriza a privacidade dos seus dados pessoais. Esta política descreve
-          como tratamos as informações dos visitantes e clientes do site{' '}
-          <strong>ceresbrasil.com.br</strong>, em conformidade com a{' '}
-          <strong>Lei nº 13.709/2018 (LGPD)</strong>.
+          A {BRAND.nome} (CNPJ {BRAND.cnpj}), com sede em {BRAND.enderecoLinha1},{' '}
+          {BRAND.enderecoLinha2}, valoriza a privacidade dos seus dados pessoais. Esta política
+          descreve como tratamos as informações dos visitantes e clientes deste site, em
+          conformidade com a <strong>Lei nº 13.709/2018 (LGPD)</strong>.
         </p>
 
         <Section titulo="1. Dados que coletamos">
@@ -105,10 +105,10 @@ export default function PoliticaPrivacidadePage() {
           <p className="mt-3">
             Para exercer qualquer desses direitos, envie um e-mail para{' '}
             <a
-              href="mailto:contato@ceresbrasil.com.br"
+              href={`mailto:${BRAND.email}`}
               className="font-medium text-ceres-dark underline"
             >
-              contato@ceresbrasil.com.br
+              {BRAND.email}
             </a>
             .
           </p>
@@ -134,10 +134,10 @@ export default function PoliticaPrivacidadePage() {
           <p>
             Encarregado pelo Tratamento de Dados (DPO):{' '}
             <a
-              href="mailto:contato@ceresbrasil.com.br"
+              href={`mailto:${BRAND.email}`}
               className="font-medium text-ceres-dark underline"
             >
-              contato@ceresbrasil.com.br
+              {BRAND.email}
             </a>
           </p>
         </Section>

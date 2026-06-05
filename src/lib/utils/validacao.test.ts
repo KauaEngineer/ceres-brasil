@@ -43,7 +43,7 @@ describe('validarCNPJ', () => {
 describe('validarEmail', () => {
   it('aceita e-mails válidos', () => {
     expect(validarEmail('a@b.co')).toBe(true);
-    expect(validarEmail('contato@ceresbrasil.com.br')).toBe(true);
+    expect(validarEmail('contato@exemplo.com.br')).toBe(true);
   });
 
   it('rejeita e-mails inválidos', () => {

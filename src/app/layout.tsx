@@ -12,8 +12,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Ceres Brasil — Alimentos naturais sem glúten',
-    template: '%s | Ceres Brasil',
+    default: 'Sua Marca — Alimentos naturais sem glúten',
+    template: '%s | Sua Marca',
   },
   description:
     'Massas, farinhas e grãos sem glúten produzidos com qualidade nutricional. Enviamos para todo o Brasil.',

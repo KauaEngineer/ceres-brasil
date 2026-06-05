@@ -5,7 +5,7 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 export const metadata: Metadata = {
   title: 'Quem Somos',
   description:
-    'Conheça a história, missão e valores da Ceres Brasil — alimentos naturais sem glúten produzidos com qualidade nutricional desde São Paulo.',
+    'Conheça a história, missão e valores da Sua Marca — alimentos naturais sem glúten produzidos com qualidade nutricional.',
 };
 
 const numeros = [
@@ -37,7 +37,7 @@ const valores = [
 ];
 
 const equipe = [
-  { nome: 'Equipe Ceres', cargo: 'Produção & Qualidade' },
+  { nome: 'Nossa equipe', cargo: 'Produção & Qualidade' },
   { nome: 'Atendimento', cargo: 'Suporte ao cliente' },
   { nome: 'Comercial B2B', cargo: 'Revendedores' },
 ];
@@ -57,10 +57,10 @@ export default function QuemSomosPage() {
             <h1 className="mt-4 text-4xl font-light leading-tight tracking-tight drop-shadow-md md:text-6xl">
               Nossa história começa
               <br />
-              numa cozinha de São Paulo.
+              numa cozinha de verdade.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-white/95 drop-shadow md:text-xl">
-              A Ceres Brasil nasceu pra provar que comida sem glúten pode — e deve — ser deliciosa,
+              A Sua Marca nasceu pra provar que comida sem glúten pode — e deve — ser deliciosa,
               nutritiva e acessível.
             </p>
           </div>
@@ -78,7 +78,7 @@ export default function QuemSomosPage() {
             />
             <div className="mt-6 space-y-4 text-base leading-relaxed text-ceres-muted md:text-lg">
               <p>
-                A Ceres Brasil nasceu de um jeito simples: sem grandes planos, sem estrutura e sem
+                A Sua Marca nasceu de um jeito simples: sem grandes planos, sem estrutura e sem
                 imaginar onde aquilo poderia chegar. Tudo começou com uma ideia, vontade de
                 empreender e MUITO esforço.
               </p>
@@ -96,7 +96,7 @@ export default function QuemSomosPage() {
                 realmente importa: entregar um produto de qualidade.
               </p>
               <p>
-                Hoje, a Ceres Brasil produz massas, farinhas e grãos à base de leguminosas como
+                Hoje, a Sua Marca produz massas, farinhas e grãos à base de leguminosas como
                 grão de bico e lentilha, levando alimentação prática e nutritiva para consumidores
                 em todo o Brasil. Mesmo com o crescimento, mantemos a mesma essência do começo:
                 criar produtos com ingredientes de verdade, sem exageros e com cuidado em cada
@@ -148,7 +148,7 @@ export default function QuemSomosPage() {
           <SectionTitle
             eyebrow="Números"
             title="Uma trajetória construída com cuidado"
-            description="Cada número aqui representa famílias, refeições e parcerias que confiam na Ceres."
+            description="Cada número aqui representa famílias, refeições e parcerias que confiam na marca."
           />
           <div className="mt-14 grid grid-cols-2 gap-6 md:grid-cols-4">
             {numeros.map((n) => (
@@ -174,7 +174,7 @@ export default function QuemSomosPage() {
               Para onde vamos
             </p>
             <h2 className="mt-3 text-3xl font-light tracking-tight md:text-4xl">
-              Levar a Ceres a cada cozinha brasileira que valoriza o que come.
+              Levar comida boa a cada cozinha brasileira que valoriza o que come.
             </h2>
           </div>
           <ul className="space-y-5 text-base leading-relaxed text-white/90 md:text-lg">
