@@ -47,7 +47,7 @@ function LoginForm() {
   return (
     <>
       <h1 className="text-2xl font-medium text-ceres-dark">Entrar</h1>
-      <p className="mt-1 text-sm text-ceres-muted">Acesse sua conta Sua Marca.</p>
+      <p className="mt-1 text-sm text-ceres-muted">Acesse sua conta Ceres Brasil.</p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <Input

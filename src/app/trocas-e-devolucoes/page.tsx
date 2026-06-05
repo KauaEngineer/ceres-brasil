@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-import { BRAND } from '@/lib/brand';
 
 export const metadata: Metadata = {
   title: 'Trocas e Devoluções',
   description:
-    'Política de trocas e devoluções da Sua Marca. Direito de arrependimento em até 7 dias conforme o CDC.',
+    'Política de trocas e devoluções da Ceres Brasil. Direito de arrependimento em até 7 dias conforme o CDC.',
 };
 
 const ATUALIZADO_EM = '27 de maio de 2026';
@@ -18,7 +17,7 @@ export default function TrocasPage() {
 
       <div className="mt-10 max-w-3xl space-y-6 text-base leading-relaxed text-ceres-dark">
         <p>
-          Queremos que você fique satisfeito com cada compra na Sua Marca. Esta política
+          Queremos que você fique satisfeito com cada compra na Ceres Brasil. Esta política
           descreve seus direitos e como proceder em caso de troca ou devolução, em conformidade
           com o <strong>Código de Defesa do Consumidor (CDC, Lei 8.078/90)</strong>.
         </p>
@@ -32,7 +31,7 @@ export default function TrocasPage() {
           <ul className="list-disc space-y-2 pl-6 marker:text-ceres-terracotta-dark">
             <li>O produto deve estar lacrado e sem indícios de uso.</li>
             <li>A embalagem original deve estar preservada.</li>
-            <li>O frete de devolução é por conta da Sua Marca neste caso.</li>
+            <li>O frete de devolução é por conta da Ceres Brasil neste caso.</li>
           </ul>
         </Section>
 
@@ -49,10 +48,10 @@ export default function TrocasPage() {
             <li>
               Envie e-mail para{' '}
               <a
-                href={`mailto:${BRAND.email}`}
+                href="mailto:contato@ceresbrasil.com.br"
                 className="font-medium text-ceres-dark underline"
               >
-                {BRAND.email}
+                contato@ceresbrasil.com.br
               </a>{' '}
               com o número do pedido e o motivo da solicitação.
             </li>
@@ -104,10 +103,13 @@ export default function TrocasPage() {
 
         <Section titulo="7. Dúvidas">
           <p>
-            Estamos à disposição via WhatsApp <strong>{BRAND.whatsappDisplay}</strong>, Instagram{' '}
-            <strong>{BRAND.instagramHandle}</strong> ou e-mail{' '}
-            <a href={`mailto:${BRAND.email}`} className="font-medium text-ceres-dark underline">
-              {BRAND.email}
+            Estamos à disposição via WhatsApp <strong>(11) 92477-1165</strong>, Instagram{' '}
+            <strong>@ceresbrasil</strong> ou e-mail{' '}
+            <a
+              href="mailto:contato@ceresbrasil.com.br"
+              className="font-medium text-ceres-dark underline"
+            >
+              contato@ceresbrasil.com.br
             </a>
             .
           </p>

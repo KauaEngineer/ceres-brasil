@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { B2BProductCard } from '@/components/produtos/B2BProductCard';
-import { whatsappLink } from '@/lib/brand';
 import { listarProdutos } from '@/lib/mock/produtos';
 import { createClient } from '@/lib/supabase/server';
 import { CATEGORIAS } from '@/types/produto';
@@ -9,7 +8,7 @@ import { CATEGORIAS } from '@/types/produto';
 export const metadata: Metadata = {
   title: 'Loja B2B — Catálogo de Revenda',
   description:
-    'Catálogo exclusivo para revendedores Sua Marca. Preços sob consulta, caixas fechadas, suporte dedicado.',
+    'Catálogo exclusivo para revendedores Ceres Brasil. Preços sob consulta, caixas fechadas, suporte dedicado.',
 };
 
 /**
@@ -123,7 +122,7 @@ export default async function LojaB2BPage() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
-              href={whatsappLink('Olá! Tenho interesse em revenda.')}
+              href="https://wa.me/5511924771165?text=Ol%C3%A1!%20Tenho%20interesse%20em%20revenda%20Ceres%20Brasil."
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full bg-ceres-teal px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-ceres-teal-dark"

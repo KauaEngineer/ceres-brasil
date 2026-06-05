@@ -145,7 +145,7 @@ export default function CheckoutPage() {
       const base = `Transportadora do cliente: ${transportadora.trim()}`;
       return transpObs.trim() ? `${base} — ${transpObs.trim()}` : base;
     }
-    return 'Cotação pela loja — aguardando opção mais econômica para aprovação do cliente.';
+    return 'Cotação Ceres — aguardando opção mais econômica para aprovação do cliente.';
   }
 
   async function finalizar() {
@@ -372,7 +372,7 @@ export default function CheckoutPage() {
                       )}
                     </label>
 
-                    {/* Opção 2 — cotação pela loja */}
+                    {/* Opção 2 — cotação pela Ceres */}
                     <label
                       className={`block cursor-pointer rounded-xl border p-3 ${
                         freteB2BTipo === 'cotacao_ceres'
@@ -390,7 +390,7 @@ export default function CheckoutPage() {
                         />
                         <span>
                           <span className="font-medium text-ceres-dark">
-                            Quero que a loja cote o frete
+                            Quero que a Ceres cote o frete
                           </span>
                           <span className="block text-xs text-ceres-muted">
                             Cotamos com nossas parceiras e enviamos a opção mais econômica para

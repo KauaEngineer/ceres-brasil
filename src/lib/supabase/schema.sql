@@ -4,7 +4,7 @@
 -- =========================================================================
 -- COMO EXECUTAR:
 --   1. Abra https://supabase.com/dashboard
---   2. Selecione o projeto Sua Marca
+--   2. Selecione o projeto Ceres Brasil
 --   3. No menu lateral, clique em "SQL Editor"
 --   4. Clique em "New query"
 --   5. Cole TODO o conteudo deste arquivo

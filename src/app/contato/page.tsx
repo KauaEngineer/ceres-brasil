@@ -1,31 +1,31 @@
 import type { Metadata } from 'next';
 import { ContatoForm } from '@/components/contato/ContatoForm';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-import { BRAND, whatsappLink } from '@/lib/brand';
 
 export const metadata: Metadata = {
   title: 'Contato',
-  description: 'Fale com a Sua Marca. Atendimento via WhatsApp, Instagram e formulário online.',
+  description:
+    'Fale com a Ceres Brasil. Atendimento via WhatsApp, Instagram e formulário online. Rua Augusto Farina, 954 — Butantã, São Paulo SP.',
 };
 
 const infoContato = [
   {
     icon: <WhatsAppIcon />,
     titulo: 'WhatsApp',
-    valor: BRAND.whatsappDisplay,
-    href: whatsappLink(),
+    valor: '(11) 92477-1165',
+    href: 'https://wa.me/5511924771165',
   },
   {
     icon: <InstagramIcon />,
     titulo: 'Instagram',
-    valor: BRAND.instagramHandle,
-    href: BRAND.instagramUrl,
+    valor: '@ceresbrasil',
+    href: 'https://instagram.com/ceresbrasil',
   },
   {
     icon: <MailIcon />,
     titulo: 'E-mail',
-    valor: BRAND.email,
-    href: `mailto:${BRAND.email}`,
+    valor: 'contato@ceresbrasil.com.br',
+    href: 'mailto:contato@ceresbrasil.com.br',
   },
 ];
 
@@ -92,9 +92,9 @@ export default function ContatoPage() {
                     Endereço
                   </p>
                   <p className="mt-1 text-sm leading-relaxed text-ceres-dark">
-                    {BRAND.enderecoLinha1}
+                    Rua Augusto Farina, 954
                     <br />
-                    {BRAND.enderecoLinha2}
+                    Butantã, São Paulo — SP
                   </p>
                 </div>
               </div>
@@ -116,14 +116,20 @@ export default function ContatoPage() {
         </div>
       </section>
 
-      {/* Mapa — placeholder ilustrativo */}
+      {/* Mapa Google embed */}
       <section className="pb-20">
         <div className="container-ceres">
           <h2 className="sr-only">Como chegar</h2>
-          <div className="flex h-[300px] items-center justify-center rounded-3xl border-2 border-dashed border-ceres-sand-soft bg-ceres-sand-soft/30">
-            <span className="text-sm font-medium uppercase tracking-wider text-ceres-muted">
-              Mapa / localização
-            </span>
+          <div className="overflow-hidden rounded-3xl border border-ceres-sand-soft">
+            <iframe
+              src="https://www.google.com/maps?q=Rua+Augusto+Farina+954,+Butant%C3%A3,+S%C3%A3o+Paulo&output=embed"
+              width="100%"
+              height="400"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Localização da Ceres Brasil — Rua Augusto Farina, 954, Butantã, São Paulo SP"
+              className="block w-full"
+            />
           </div>
         </div>
       </section>

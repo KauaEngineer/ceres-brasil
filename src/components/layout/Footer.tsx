@@ -1,5 +1,5 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { BRAND, whatsappLink } from '@/lib/brand';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -18,7 +18,13 @@ export function Footer() {
       <div className="container-ceres grid gap-12 py-14 md:grid-cols-4">
         {/* Coluna marca */}
         <div className="md:col-span-2">
-          <span className="text-2xl font-light tracking-tight text-ceres-dark">{BRAND.nome}</span>
+          <Image
+            src="/logo-ceres.png"
+            alt="Ceres Brasil — Produtos Artesanais"
+            width={120}
+            height={120}
+            className="h-20 w-auto"
+          />
           <p className="mt-4 max-w-md text-sm text-ceres-muted">
             Alimentos naturais sem glúten — massas, farinhas e grãos com qualidade nutricional.
             Atendemos consumidores e revendedores em todo o território nacional.
@@ -79,27 +85,27 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm text-ceres-muted">
             <li>
               <a
-                href={whatsappLink()}
+                href="https://wa.me/5511924771165"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 transition-colors hover:text-ceres-terracotta-dark"
               >
-                <WhatsAppIcon className="h-4 w-4" /> {BRAND.whatsappDisplay}
+                <WhatsAppIcon className="h-4 w-4" /> (11) 92477-1165
               </a>
             </li>
             <li>
               <a
-                href={BRAND.instagramUrl}
+                href="https://instagram.com/ceresbrasil"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 transition-colors hover:text-ceres-terracotta-dark"
               >
-                <InstagramIcon className="h-4 w-4" /> {BRAND.instagramHandle}
+                <InstagramIcon className="h-4 w-4" /> @ceresbrasil
               </a>
             </li>
             <li className="pt-2 leading-relaxed">
-              {BRAND.enderecoLinha1}
-              <br /> {BRAND.enderecoLinha2}
+              Rua Augusto Farina, 954
+              <br /> Butantã, São Paulo SP
             </li>
           </ul>
         </div>
@@ -108,7 +114,7 @@ export function Footer() {
       {/* Rodape final */}
       <div className="border-t border-ceres-sand-soft">
         <div className="container-ceres flex flex-col items-center justify-between gap-3 py-5 text-xs text-ceres-muted md:flex-row">
-          <p>© {year} {BRAND.nome} · CNPJ {BRAND.cnpj} · Todos os direitos reservados</p>
+          <p>© {year} Ceres Brasil · CNPJ 12.674.225/0001-02 · Todos os direitos reservados</p>
           <div className="flex gap-5">
             <Link
               href="/politica-de-privacidade"

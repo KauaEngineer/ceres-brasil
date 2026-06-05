@@ -49,7 +49,7 @@ export default function AdminLoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-ceres-charcoal px-4">
       <div className="w-full max-w-sm rounded-2xl bg-white p-8 shadow-2xl">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ceres-gold">
-          Sua Marca
+          Ceres Brasil
         </p>
         <h1 className="mt-2 text-2xl font-medium text-ceres-dark">Painel administrativo</h1>
         <p className="mt-1 text-sm text-ceres-muted">Acesso restrito a administradores.</p>
