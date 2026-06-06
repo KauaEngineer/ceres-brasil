@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const numeros = [
   { valor: '+10', rotulo: 'anos no mercado' },
   { valor: '+5 mil', rotulo: 'clientes atendidos' },
-  { valor: '15', rotulo: 'produtos no catálogo' },
+  { valor: '24', rotulo: 'produtos no catálogo' },
   { valor: '100%', rotulo: 'sem glúten' },
 ];
 

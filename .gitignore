@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Fotos originais (pesadas) — só as otimizadas em public/ vão pro repo
+fotos-originais/
