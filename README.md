@@ -4,6 +4,10 @@ E-commerce completo para uma marca real de alimentos sem glúten, com **loja par
 
 🔗 **[Ver demo ao vivo →](https://ceres-brasil.vercel.app)**
 
+![Home — catálogo e categorias](https://github.com/user-attachments/assets/51680c7e-11b9-420d-b858-fc43f0f18508)
+![Portal B2B — catálogo de revenda](https://github.com/user-attachments/assets/12086398-3ea3-425b-a2bc-ce6305ec0771)
+![Painel administrativo](https://github.com/user-attachments/assets/9fbd967a-a34e-450e-9214-b59184c82701)
+
 > **Contexto:** build de portfólio baseado na identidade de uma marca real (com autorização do dono). Pagamento, frete e integrações com ERP estão **simulados** — o objetivo é demonstrar arquitetura, modelagem de regras de negócio e UX completo, não processar transações reais.
 
 ---
