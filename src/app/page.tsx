@@ -11,7 +11,7 @@ const fotoCategoria: Record<string, string> = {
   massas:
     'https://images.unsplash.com/photo-1612966893103-790e549a2ab1?w=800&q=80&auto=format&fit=crop',
   graos:
-    'https://images.unsplash.com/photo-1708436477916-f97964f3ccf1?w=800&q=80&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1767875816994-88dd9d05ce2f?w=800&q=80&auto=format&fit=crop',
   farinhas:
     'https://images.unsplash.com/photo-1749169439872-7cee08d9a71b?w=800&q=80&auto=format&fit=crop',
 };
