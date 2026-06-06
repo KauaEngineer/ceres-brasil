@@ -14,8 +14,8 @@ import type { Produto } from '@/types/produto';
  */
 export type ModoCarrinho = 'b2c' | 'b2b';
 
-/** Quantas unidades vêm numa caixa fechada de revenda (B2B). */
-export const UNIDADES_POR_CAIXA = 12;
+export { UNIDADES_POR_CAIXA } from '@/lib/constants';
+import { UNIDADES_POR_CAIXA } from '@/lib/constants';
 
 /**
  * Item do carrinho — guardamos só o essencial (não o Produto inteiro) pra:

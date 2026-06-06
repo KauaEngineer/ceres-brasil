@@ -1,6 +1,7 @@
 'use client';
 
-import { UNIDADES_POR_CAIXA, useCarrinho } from '@/hooks/useCarrinho';
+import { UNIDADES_POR_CAIXA } from '@/lib/constants';
+import { useCarrinho } from '@/hooks/useCarrinho';
 import type { Produto } from '@/types/produto';
 
 /**

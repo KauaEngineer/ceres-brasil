@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { BotaoAdicionarB2B } from '@/components/carrinho/BotaoAdicionarB2B';
-import { UNIDADES_POR_CAIXA } from '@/hooks/useCarrinho';
+import { UNIDADES_POR_CAIXA } from '@/lib/constants';
 import { formatarPreco } from '@/lib/utils/pedido';
 import type { Produto } from '@/types/produto';
 
