@@ -37,10 +37,22 @@ const valores = [
   },
 ];
 
-const equipe = [
-  { nome: 'Equipe Ceres', cargo: 'Produção & Qualidade' },
-  { nome: 'Atendimento', cargo: 'Suporte ao cliente' },
-  { nome: 'Comercial B2B', cargo: 'Revendedores' },
+const etapas = [
+  {
+    icone: <BagIcon />,
+    titulo: 'Pedido feito',
+    texto: 'Você escolhe os produtos no site e finaliza pelo checkout — Pix, cartão ou boleto.',
+  },
+  {
+    icone: <CheckListIcon />,
+    titulo: 'Separação cuidadosa',
+    texto: 'Cada pedido é conferido lote a lote antes de ser embalado para envio.',
+  },
+  {
+    icone: <TruckIcon />,
+    titulo: 'Envio em até 48h',
+    texto: 'Despachamos para todo o Brasil pelos Correios ou transportadora parceira.',
+  },
 ];
 
 export default function QuemSomosPage() {
@@ -112,8 +124,8 @@ export default function QuemSomosPage() {
           </div>
           <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-ceres-terracotta-dark/20 md:sticky md:top-28">
             <Image
-              src="/produto-exemplo.png"
-              alt="Produtos Ceres Brasil"
+              src="https://images.unsplash.com/photo-1447279506476-3faec8071eee?w=1200&q=80&auto=format&fit=crop"
+              alt="Mãos preparando massa artesanal"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
@@ -203,27 +215,28 @@ export default function QuemSomosPage() {
         </div>
       </section>
 
-      {/* EQUIPE */}
+      {/* COMO TRABALHAMOS */}
       <section className="py-20 md:py-28">
         <div className="container-ceres">
           <SectionTitle
-            eyebrow="Equipe"
-            title="Pessoas por trás da marca"
-            description="Time enxuto, comprometido com qualidade e atendimento humano."
+            eyebrow="Processo"
+            title="Como seu pedido chega até você"
+            description="Simples, transparente e com cuidado em cada etapa."
           />
           <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {equipe.map((p) => (
+            {etapas.map((e, i) => (
               <article
-                key={p.nome}
-                className="overflow-hidden rounded-2xl border border-ceres-sand-soft bg-white"
+                key={e.titulo}
+                className="relative rounded-2xl border border-ceres-sand-soft bg-white p-8"
               >
-                <div className="aspect-square bg-gradient-to-br from-ceres-sand-soft to-ceres-gold-soft" />
-                <div className="p-5 text-center">
-                  <h3 className="text-base font-semibold text-ceres-dark">{p.nome}</h3>
-                  <p className="mt-1 text-xs uppercase tracking-wider text-ceres-muted">
-                    {p.cargo}
-                  </p>
+                <span className="absolute right-6 top-6 text-5xl font-light text-ceres-sand-soft select-none">
+                  {i + 1}
+                </span>
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ceres-terracotta-dark text-white">
+                  {e.icone}
                 </div>
+                <h3 className="mt-5 text-xl font-medium text-ceres-dark">{e.titulo}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ceres-muted">{e.texto}</p>
               </article>
             ))}
           </div>
@@ -302,6 +315,41 @@ function CheckIcon({ className }: { className?: string }) {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+function BagIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+      <path
+        d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <path d="M3 6h18M16 10a4 4 0 01-8 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function CheckListIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+      <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+      <rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" strokeWidth="2" />
+      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function TruckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+      <path d="M3 7h11v8H3z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+      <path d="M14 10h4l3 3v2h-7z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+      <circle cx="7.5" cy="17.5" r="1.5" fill="currentColor" />
+      <circle cx="17.5" cy="17.5" r="1.5" fill="currentColor" />
     </svg>
   );
 }

@@ -75,8 +75,8 @@ export default function Home() {
         <div className="container-ceres grid items-center gap-12 md:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-ceres-terracotta-dark/20 md:order-2">
             <Image
-              src="/produto-exemplo.png"
-              alt="Produtos Ceres Brasil"
+              src="https://images.unsplash.com/photo-1447279506476-3faec8071eee?w=1200&q=80&auto=format&fit=crop"
+              alt="Mãos preparando massa artesanal"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
