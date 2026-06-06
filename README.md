@@ -1,108 +1,125 @@
 # Ceres Brasil — E-commerce B2C + B2B
 
-E-commerce institucional completo para uma marca de massas, farinhas e grãos **sem glúten**, com loja para **consumidor final (B2C)** e **portal de revenda (B2B)** no mesmo sistema.
+E-commerce completo para uma marca real de alimentos sem glúten, com **loja para consumidor final (B2C)** e **portal de revenda atacadista (B2B)** no mesmo sistema — dois modelos de negócio, uma única base de código.
 
-🔗 **Demo ao vivo:** https://ceres-brasil.vercel.app
+🔗 **[Ver demo ao vivo →](https://ceres-brasil.vercel.app)**
 
-> **Sobre este projeto:** é um build independente de **portfólio**, feito a partir da identidade de uma marca real. Pagamento, frete e integrações externas (Bling, Mercado Pago, Frenet) estão **simulados** — o foco é demonstrar arquitetura, modelagem de regras de negócio e UX de ponta a ponta, não processar transações reais.
-
----
-
-## ✨ Destaques
-
-O que diferencia este projeto de um CRUD de loja qualquer é a **modelagem de dois modelos de negócio** convivendo no mesmo código:
-
-### Loja B2C (varejo)
-- Catálogo com filtro por categoria, página de produto com tabela nutricional, ISR (revalidação a cada 10 min)
-- Carrinho persistente (Zustand + localStorage)
-- Checkout em 3 etapas com cálculo de frete por CEP (ViaCEP) e múltiplas formas de pagamento
-- Área do cliente: pedidos com timeline, endereços (CRUD), dados da conta
-
-### Portal B2B (revenda) — o coração do projeto
-- **Gate de acesso por aprovação:** o catálogo é público, mas **preços de revenda só aparecem para PJ com cadastro aprovado** (checado no servidor, reforçado por Row Level Security no banco)
-- **Venda em caixa fechada** (12 unidades) com preço de atacado
-- **Frete FOB** (por conta do destinatário): o revendedor informa a transportadora própria *ou* solicita cotação — espelhando como o atacado funciona de verdade
-- **Condições B2B:** Pix com 5% de desconto, boleto com 28 dias corridos
-- Cadastro PJ em 2 etapas com upload de documentos e fluxo de aprovação
-
-### Painel administrativo
-- Dashboard com métricas e gráficos
-- Gestão de pedidos (status, rastreio, exportação CSV)
-- Aprovação/rejeição de clientes PJ (com documentos via signed URLs)
-- Catálogo, estoque e relatórios (B2C × B2B, top produtos)
+> **Contexto:** build de portfólio baseado na identidade de uma marca real (com autorização do dono). Pagamento, frete e integrações com ERP estão **simulados** — o objetivo é demonstrar arquitetura, modelagem de regras de negócio e UX completo, não processar transações reais.
 
 ---
 
-## 🔐 Acesso à demonstração
+## O que tem de diferente aqui
 
-Use as contas abaixo na [tela de login](https://ceres-brasil.vercel.app/login):
+A maioria dos projetos de portfólio é uma loja B2C simples com CRUD. Este vai além: implementa **dois modelos de negócio com regras distintas convivendo no mesmo app**.
 
-| Perfil | E-mail | Senha | O que mostra |
-|--------|--------|-------|--------------|
-| **Cliente (B2C)** | `demo@ceresbrasil.com.br` | `demo12345` | Compra de varejo, conta, pedidos |
-| **Revendedor (B2B)** | `demo-pj@ceresbrasil.com.br` | `demo12345` | Preços de revenda, caixa fechada, frete FOB |
-| **Admin** | `demo@ceresbrasil.com.br` | `demo12345` | Painel em `/admin` (mesma conta, também é admin) |
+### Gate de acesso B2B (a decisão mais interessante)
+O catálogo é público para qualquer visitante. Mas **preços de revenda e botão de compra B2B só aparecem para empresas com cadastro aprovado** — verificado no servidor a cada request, reforçado por Row Level Security no Postgres. A UI esconde, mas a API e o banco decidem: um cliente mal-intencionado que burlar o front ainda leva um 403.
+
+### Carrinho com modo B2C/B2B
+O mesmo hook `useCarrinho` (Zustand) opera em dois modos. No B2B, os itens são vendidos em caixa fechada (12 un.), com preço de atacado e nome prefixado. Trocar de modo limpa o carrinho — não dá pra misturar varejo com revenda.
+
+### Frete FOB no checkout B2B
+No varejo, o frete é calculado por CEP (Correios). Na revenda, a lógica é diferente: o comprador informa a transportadora própria ou solicita cotação — espelhando como o atacado funciona de verdade. O campo `frete_obs` fica registrado no pedido para o admin.
+
+### Demo que não quebra
+O painel admin é totalmente visível na demo, mas as ações que modificam dados retornam 403 no servidor e mostram um toast explicativo. Reset diário automático via Vercel Cron mantém o banco limpo. Resultado: qualquer recrutador ou visitante consegue explorar o sistema sem estragar o estado.
 
 ---
 
-## 🧱 Stack & decisões técnicas
+## Funcionalidades
 
-| Camada | Tecnologia | Por quê |
+**Loja B2C**
+- Catálogo com filtro por categoria + busca, página de produto com tabela nutricional
+- ISR (revalidação a cada 10 min), SSG para as 24 páginas de produto
+- Checkout em 3 etapas: endereço → frete (Correios) → pagamento (Pix / Cartão / Boleto)
+- Área do cliente: histórico de pedidos com timeline, endereços (CRUD), dados da conta
+
+**Portal B2B**
+- Cadastro PJ em 2 etapas com upload de documentos (CNPJ, contrato social)
+- Gate de acesso por aprovação manual — catálogo público, preços protegidos
+- Venda em caixa fechada (12 un.) com preço de atacado
+- Condições de pagamento: Pix com 5% de desconto ou boleto 28 dias corridos
+- Frete FOB: transportadora própria ou solicitação de cotação
+
+**Painel administrativo** (`/admin`)
+- Dashboard com métricas e gráficos (pedidos, receita, clientes)
+- Gestão de pedidos: atualização de status, rastreio, exportação CSV
+- Aprovação / rejeição de clientes PJ com visualização de documentos (signed URLs)
+- Relatórios: comparativo B2C × B2B, top produtos
+
+---
+
+## 🔐 Acessar a demo
+
+| Perfil | E-mail | Senha | O que explorar |
+|--------|--------|-------|----------------|
+| **Cliente B2C** | `demo@ceresbrasil.com.br` | `demo12345` | Loja, carrinho, checkout, conta |
+| **Revendedor B2B** | `demo-pj@ceresbrasil.com.br` | `demo12345` | Preços de atacado, caixa fechada, frete FOB |
+| **Admin** | `demo@ceresbrasil.com.br` | `demo12345` | Painel em `/admin` — mesma conta, também é admin |
+
+---
+
+## Stack
+
+| Camada | Tecnologia | Decisão |
 |--------|-----------|---------|
-| Framework | **Next.js 16** (App Router, Server Components) | Renderização no servidor, rotas com proteção via `proxy`, ISR |
-| Linguagem | **TypeScript** | Contratos de tipo entre front, API e domínio |
-| Estilo | **Tailwind CSS 4** | Paletas distintas B2C (terracota) e B2B (charcoal/teal) |
-| Backend | **Supabase** (Postgres + Auth + Storage) | Banco relacional com **Row Level Security**, autenticação e upload de documentos |
-| Estado | **Zustand** | Carrinho persistente leve, com modo B2C/B2B |
-| Testes | **Jest + Testing Library** | Unidades de regra de negócio (validação, frete, carrinho) |
-| Deploy | **Vercel** | CI/CD automático a cada push |
-
-**Segurança em camadas:** toda regra sensível (acesso B2B, desconto, aprovação) é validada **no servidor e no banco (RLS)** — nunca apenas na interface. A UI esconde; a API e o Postgres decidem.
+| Framework | **Next.js 16** (App Router + Server Components) | SSR/ISR/SSG por rota, proteção via `proxy.ts` |
+| Linguagem | **TypeScript** (strict, zero `any`) | Contratos explícitos entre UI, API e domínio |
+| Estilo | **Tailwind CSS 4** | Paletas distintas: terracota (B2C) e charcoal/teal (B2B) |
+| Banco | **Supabase** (Postgres + Auth + Storage + RLS) | Segurança no banco, não só na aplicação |
+| Estado | **Zustand** | Carrinho leve com modo B2C/B2B e persistência em localStorage |
+| Testes | **Jest + Testing Library** | Regras de negócio: validação, cálculo de frete, lógica do carrinho |
+| Deploy | **Vercel** + Cron Jobs | CI/CD automático + reset diário da demo |
 
 ---
 
-## 🚀 Rodando localmente
+## Rodando localmente
 
 ```bash
 # 1. Instalar dependências
 npm install
 
-# 2. Configurar variáveis de ambiente
+# 2. Variáveis de ambiente
 cp .env.example .env.local
-# preencha NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY e SUPABASE_SERVICE_ROLE_KEY
+# preencha: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY
 
-# 3. Criar o schema no Supabase
-# rode src/lib/supabase/schema.sql e as migrations em src/lib/supabase/migrations/ (em ordem) no SQL Editor
+# 3. Schema no Supabase
+# SQL Editor → rode src/lib/supabase/schema.sql
+# depois as migrations em src/lib/supabase/migrations/ (ordem numérica)
 
-# 4. (Opcional) Criar contas de demonstração
-node scripts/seed-demo.mjs       # cliente PF
-node scripts/seed-demo-pj.mjs    # revendedor PJ aprovado
-node scripts/seed-admin.mjs      # promove a conta a admin
+# 4. Contas de demo (opcional)
+node scripts/seed-demo.mjs       # cliente B2C
+node scripts/seed-demo-pj.mjs    # revendedor B2B aprovado
+node scripts/seed-admin.mjs      # promove conta a admin
 
-# 5. Subir o servidor
+# 5. Iniciar
 npm run dev        # http://localhost:3000
-
-# Outros
 npm test           # testes unitários
 npm run build      # build de produção
 ```
 
 ---
 
-## 📁 Estrutura
+## Estrutura
 
 ```
 src/
-├── app/              # rotas (App Router): loja, checkout, conta, admin, api
-├── components/       # UI reutilizável (carrinho, produtos, admin, layout, ui)
+├── app/              # rotas Next.js: loja, checkout, conta, admin, api
+├── components/       # componentes por domínio: carrinho, produtos, admin, layout, ui
 ├── hooks/            # useCarrinho (Zustand), useToast
-├── lib/              # supabase (client/server/admin), utils, mock, admin
-├── types/            # contratos de domínio (Produto, etc.)
-└── proxy.ts          # proteção de rotas (/admin, /conta) + refresh de sessão
+├── lib/              # supabase (client/server/admin), utils, mock, admin auth
+├── types/            # contratos de domínio (Produto, Pedido, Empresa…)
+└── proxy.ts          # proteção de rotas privadas + refresh de sessão (Next.js 16)
 ```
 
 ---
 
-## 📌 Status
+## Escopo do portfólio
 
-Projeto funcionalmente completo (B2C + B2B + admin). Integrações reais de pagamento (Mercado Pago), frete (Frenet) e ERP (Bling) ficam para a versão de produção, caso o projeto seja contratado pela marca.
+Este projeto demonstra arquitetura e regras de negócio. O que ficaria para uma versão de produção real:
+
+- **Pagamento real** — integração Mercado Pago / Pix dinâmico (chaves já no `.env.example`)
+- **Frete real** — Frenet API para cálculo por transportadora (também no `.env.example`)
+- **ERP** — sincronização de estoque com Bling
+- **E-mails transacionais** — confirmação de pedido, aprovação B2B (Resend)
+- **Testes de integração** — cobertura das rotas de API e fluxos de autenticação
