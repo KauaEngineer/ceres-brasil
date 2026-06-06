@@ -7,6 +7,15 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 import { listarDestaques } from '@/lib/mock/produtos';
 import { CATEGORIAS } from '@/types/produto';
 
+const fotoCategoria: Record<string, string> = {
+  massas:
+    'https://images.unsplash.com/photo-1612966893103-790e549a2ab1?w=800&q=80&auto=format&fit=crop',
+  graos:
+    'https://images.unsplash.com/photo-1708436477916-f97964f3ccf1?w=800&q=80&auto=format&fit=crop',
+  farinhas:
+    'https://images.unsplash.com/photo-1749169439872-7cee08d9a71b?w=800&q=80&auto=format&fit=crop',
+};
+
 const trustBadges = [
   { icon: <FreteIcon />, title: 'Frete para todo Brasil', text: 'Despachamos em até 48h' },
   { icon: <CardIcon />, title: 'Pague como quiser', text: 'Cartão, Pix ou boleto' },
@@ -73,7 +82,7 @@ export default function Home() {
       {/* 3. SOBRE A CERES — teaser institucional */}
       <section id="sobre" className="scroll-mt-24 py-20 md:py-28">
         <div className="container-ceres grid items-center gap-12 md:grid-cols-2">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-ceres-terracotta-dark/20 md:order-2">
+          <div className="relative aspect-4/3 overflow-hidden rounded-3xl border border-ceres-terracotta-dark/20 md:order-2">
             <Image
               src="https://images.unsplash.com/photo-1447279506476-3faec8071eee?w=1200&q=80&auto=format&fit=crop"
               alt="Mãos preparando massa artesanal"
@@ -124,16 +133,16 @@ export default function Home() {
               <Link
                 key={c.slug}
                 href={`/produtos?categoria=${c.slug}`}
-                className="group relative aspect-[4/5] overflow-hidden rounded-3xl"
+                className="group relative aspect-4/5 overflow-hidden rounded-3xl"
               >
                 <Image
-                  src={`/produtos/${c.slug}.webp`}
+                  src={fotoCategoria[c.slug] ?? `/produtos/${c.slug}.webp`}
                   alt={c.rotuloPlural}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-8 text-white">
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/80">
                     Categoria
