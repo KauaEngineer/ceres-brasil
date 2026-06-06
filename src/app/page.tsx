@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { HeroCarousel } from '@/components/home/HeroCarousel';
 import { Newsletter } from '@/components/home/Newsletter';
@@ -33,13 +34,6 @@ const pilares = [
     icon: <ShieldCheckIcon />,
   },
 ];
-
-// Imagens placeholder por categoria — gradientes ate ter fotos reais
-const gradientesCategoria: Record<string, string> = {
-  massas: 'from-ceres-terracotta-dark via-ceres-terracotta to-ceres-sand-soft',
-  farinhas: 'from-ceres-gold via-ceres-gold-soft to-ceres-cream',
-  graos: 'from-ceres-terracotta to-ceres-gold-soft',
-};
 
 export default function Home() {
   const destaques = listarDestaques(4);
@@ -79,10 +73,14 @@ export default function Home() {
       {/* 3. SOBRE A CERES — teaser institucional */}
       <section id="sobre" className="scroll-mt-24 py-20 md:py-28">
         <div className="container-ceres grid items-center gap-12 md:grid-cols-2">
-          <div className="flex aspect-[4/3] items-center justify-center rounded-3xl border border-ceres-terracotta-dark/40 md:order-2">
-            <span className="text-sm font-medium uppercase tracking-[0.3em] text-ceres-muted">
-              Imagem
-            </span>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-ceres-terracotta-dark/20 md:order-2">
+            <Image
+              src="/produto-exemplo.png"
+              alt="Produtos Ceres Brasil"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
           <div className="md:order-1">
             <SectionTitle
@@ -128,8 +126,12 @@ export default function Home() {
                 href={`/produtos?categoria=${c.slug}`}
                 className="group relative aspect-[4/5] overflow-hidden rounded-3xl"
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${gradientesCategoria[c.slug]} transition-transform duration-500 group-hover:scale-105`}
+                <Image
+                  src={`/produtos/${c.slug}.webp`}
+                  alt={c.rotuloPlural}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-8 text-white">

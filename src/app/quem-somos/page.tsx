@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 
@@ -109,10 +110,14 @@ export default function QuemSomosPage() {
               </p>
             </div>
           </div>
-          <div className="flex aspect-[4/5] items-center justify-center rounded-3xl border border-ceres-terracotta-dark/40 md:sticky md:top-28">
-            <span className="text-sm font-medium uppercase tracking-[0.3em] text-ceres-muted">
-              Imagem
-            </span>
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-ceres-terracotta-dark/20 md:sticky md:top-28">
+            <Image
+              src="/produto-exemplo.png"
+              alt="Produtos Ceres Brasil"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>

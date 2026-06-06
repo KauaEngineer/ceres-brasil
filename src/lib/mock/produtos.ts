@@ -298,6 +298,16 @@ export const produtosMock: Produto[] = [
   },
 ];
 
+// Foto ILUSTRATIVA por categoria enquanto não houver foto real de cada produto.
+// Pra usar a foto real de um produto: troque o `fotos` dele lá em cima por
+// ['/produtos/<slug>.jpg'] (o arquivo vai em public/produtos/). Este loop só
+// preenche quem ainda está com o placeholder padrão.
+for (const p of produtosMock) {
+  if (p.fotos.length === 0 || p.fotos[0] === '/produto-exemplo.png') {
+    p.fotos = [`/produtos/${p.categoria}.webp`];
+  }
+}
+
 /* ---------- helpers ---------- */
 
 export function listarProdutos(categoria?: string): Produto[] {
